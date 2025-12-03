@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "5HktAnqiGTU=",
-  "success": false,
+  "dgSpecHash": "1HqVNlfPkyc=",
+  "success": true,
   "projectFilePath": "I:\\vsd\\Fulcrum\\Fulcrum.ConfigSystem\\Fulcrum.ConfigSystem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
@@ -62,15 +62,5 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\vortice.dxgi\\2.3.0\\vortice.dxgi.2.3.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\vortice.mathematics\\1.4.25\\vortice.mathematics.1.4.25.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1105",
-      "level": "Error",
-      "message": "Unable to find project information for 'I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so run a restore from the command-line. Otherwise, the project file may be invalid or missing targets required for restore.",
-      "libraryId": "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj",
-      "targetGraphs": [
-        "net9.0"
-      ]
-    }
-  ]
+  "logs": []
 }

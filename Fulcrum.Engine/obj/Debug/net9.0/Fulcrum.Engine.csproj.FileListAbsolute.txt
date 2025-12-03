@@ -24,3 +24,4 @@ I:\vsd\Fulcrum\Fulcrum.Engine\obj\Debug\net9.0\Fulcrum.Engine.dll
 I:\vsd\Fulcrum\Fulcrum.Engine\obj\Debug\net9.0\refint\Fulcrum.Engine.dll
 I:\vsd\Fulcrum\Fulcrum.Engine\obj\Debug\net9.0\Fulcrum.Engine.pdb
 I:\vsd\Fulcrum\Fulcrum.Engine\obj\Debug\net9.0\ref\Fulcrum.Engine.dll
+I:\vsd\Fulcrum\Fulcrum.Engine\obj\Debug\net9.0\Fulcrum.Engine.sourcelink.json

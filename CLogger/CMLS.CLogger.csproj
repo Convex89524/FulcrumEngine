@@ -207,12 +207,12 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\vsd\Fulcrum\packages\PolySharp.1.10.0\build\PolySharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\vsd\Fulcrum\packages\PolySharp.1.10.0\build\PolySharp.targets'))" />
-    <Error Condition="!Exists('..\..\vsd\Fulcrum\packages\SharpGen.Runtime.2.0.0-beta.13\build\SharpGen.Runtime.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\vsd\Fulcrum\packages\SharpGen.Runtime.2.0.0-beta.13\build\SharpGen.Runtime.props'))" />
-    <Error Condition="!Exists('..\..\vsd\Fulcrum\packages\SharpGen.Runtime.COM.2.0.0-beta.13\build\SharpGen.Runtime.COM.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\vsd\Fulcrum\packages\SharpGen.Runtime.COM.2.0.0-beta.13\build\SharpGen.Runtime.COM.props'))" />
-    <Error Condition="!Exists('..\..\vsd\Fulcrum\packages\Vortice.DirectX.2.3.0\build\Vortice.DirectX.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\vsd\Fulcrum\packages\Vortice.DirectX.2.3.0\build\Vortice.DirectX.props'))" />
-    <Error Condition="!Exists('..\..\vsd\Fulcrum\packages\Vortice.D3DCompiler.2.3.0\build\Vortice.D3DCompiler.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\vsd\Fulcrum\packages\Vortice.D3DCompiler.2.3.0\build\Vortice.D3DCompiler.props'))" />
-    <Error Condition="!Exists('..\..\vsd\Fulcrum\packages\Vortice.DXGI.2.3.0\build\Vortice.DXGI.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\vsd\Fulcrum\packages\Vortice.DXGI.2.3.0\build\Vortice.DXGI.props'))" />
-    <Error Condition="!Exists('..\..\vsd\Fulcrum\packages\Vortice.Direct3D11.2.3.0\build\Vortice.Direct3D11.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\vsd\Fulcrum\packages\Vortice.Direct3D11.2.3.0\build\Vortice.Direct3D11.props'))" />
+    <Error Condition="!Exists('..\packages\PolySharp.1.10.0\build\PolySharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\vsd\Fulcrum\packages\PolySharp.1.10.0\build\PolySharp.targets'))" />
+    <Error Condition="!Exists('..\packages\SharpGen.Runtime.2.0.0-beta.13\build\SharpGen.Runtime.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\vsd\Fulcrum\packages\SharpGen.Runtime.2.0.0-beta.13\build\SharpGen.Runtime.props'))" />
+    <Error Condition="!Exists('..\packages\SharpGen.Runtime.COM.2.0.0-beta.13\build\SharpGen.Runtime.COM.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\vsd\Fulcrum\packages\SharpGen.Runtime.COM.2.0.0-beta.13\build\SharpGen.Runtime.COM.props'))" />
+    <Error Condition="!Exists('..\packages\Vortice.DirectX.2.3.0\build\Vortice.DirectX.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\vsd\Fulcrum\packages\Vortice.DirectX.2.3.0\build\Vortice.DirectX.props'))" />
+    <Error Condition="!Exists('..\packages\Vortice.D3DCompiler.2.3.0\build\Vortice.D3DCompiler.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\vsd\Fulcrum\packages\Vortice.D3DCompiler.2.3.0\build\Vortice.D3DCompiler.props'))" />
+    <Error Condition="!Exists('..\packages\Vortice.DXGI.2.3.0\build\Vortice.DXGI.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\vsd\Fulcrum\packages\Vortice.DXGI.2.3.0\build\Vortice.DXGI.props'))" />
+    <Error Condition="!Exists('..\packages\Vortice.Direct3D11.2.3.0\build\Vortice.Direct3D11.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\vsd\Fulcrum\packages\Vortice.Direct3D11.2.3.0\build\Vortice.Direct3D11.props'))" />
   </Target>
 </Project>

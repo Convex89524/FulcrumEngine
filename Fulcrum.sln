@@ -5,8 +5,6 @@ VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fulcrum", "Fulcrum\Fulcrum.csproj", "{96C6F115-A8DD-4E8D-9679-1F9F5B6B1AC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMLS.CLogger", "..\..\.vs_lib\CLogger\CMLS.CLogger.csproj", "{A466F5BD-3E4E-4E0B-B622-2596BE1F8E95}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fulcrum.Engine", "Fulcrum.Engine\Fulcrum.Engine.csproj", "{128E19E5-7BCC-4E9D-8891-78A604837C66}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fulcrum.ComprehensiveParser", "Fulcrum.ComprehensiveParser\Fulcrum.ComprehensiveParser.csproj", "{1AECC499-997B-45B1-B80D-47C4E620E75A}"
@@ -23,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Veldrid.ImGui", "Veldrid.Im
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fulcrum.ConfigSystem", "Fulcrum.ConfigSystem\Fulcrum.ConfigSystem.csproj", "{CFA9B430-9AFD-46A6-ADB1-12CC939234D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMLS.CLogger", "CLogger\CMLS.CLogger.csproj", "{A466F5BD-3E4E-4E0B-B622-2596BE1F8E95}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,10 +33,6 @@ Global
 		{96C6F115-A8DD-4E8D-9679-1F9F5B6B1AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96C6F115-A8DD-4E8D-9679-1F9F5B6B1AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96C6F115-A8DD-4E8D-9679-1F9F5B6B1AC1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A466F5BD-3E4E-4E0B-B622-2596BE1F8E95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A466F5BD-3E4E-4E0B-B622-2596BE1F8E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A466F5BD-3E4E-4E0B-B622-2596BE1F8E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A466F5BD-3E4E-4E0B-B622-2596BE1F8E95}.Release|Any CPU.Build.0 = Release|Any CPU
 		{128E19E5-7BCC-4E9D-8891-78A604837C66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{128E19E5-7BCC-4E9D-8891-78A604837C66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{128E19E5-7BCC-4E9D-8891-78A604837C66}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,6 +65,10 @@ Global
 		{CFA9B430-9AFD-46A6-ADB1-12CC939234D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFA9B430-9AFD-46A6-ADB1-12CC939234D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFA9B430-9AFD-46A6-ADB1-12CC939234D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A466F5BD-3E4E-4E0B-B622-2596BE1F8E95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A466F5BD-3E4E-4E0B-B622-2596BE1F8E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A466F5BD-3E4E-4E0B-B622-2596BE1F8E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A466F5BD-3E4E-4E0B-B622-2596BE1F8E95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

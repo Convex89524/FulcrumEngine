@@ -4,6 +4,22 @@
     "I:\\vsd\\Fulcrum\\Fulcrum\\Fulcrum.csproj": {}
   },
   "projects": {
+    "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj": {
+      "restore": {
+        "projectUniqueName": "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj",
+        "projectName": "CMLS.CLogger",
+        "projectPath": "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj",
+        "UsingMicrosoftNETSdk": false,
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
     "I:\\vsd\\Fulcrum\\Fulcrum.Common\\Fulcrum.Common.csproj": {
       "version": "1.0.0",
       "restore": {

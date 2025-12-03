@@ -10,3 +10,4 @@ I:\vsd\Fulcrum\Fulcrum.ComprehensiveParser\obj\Debug\net9.0\Fulcrum.Comprehensiv
 I:\vsd\Fulcrum\Fulcrum.ComprehensiveParser\obj\Debug\net9.0\refint\Fulcrum.ComprehensiveParser.dll
 I:\vsd\Fulcrum\Fulcrum.ComprehensiveParser\obj\Debug\net9.0\Fulcrum.ComprehensiveParser.pdb
 I:\vsd\Fulcrum\Fulcrum.ComprehensiveParser\obj\Debug\net9.0\ref\Fulcrum.ComprehensiveParser.dll
+I:\vsd\Fulcrum\Fulcrum.ComprehensiveParser\obj\Debug\net9.0\Fulcrum.ComprehensiveParser.sourcelink.json

@@ -16,3 +16,4 @@ I:\vsd\Fulcrum\Fulcrum.ConfigSystem\obj\Debug\net9.0\Fulcrum.ConfigSystem.dll
 I:\vsd\Fulcrum\Fulcrum.ConfigSystem\obj\Debug\net9.0\refint\Fulcrum.ConfigSystem.dll
 I:\vsd\Fulcrum\Fulcrum.ConfigSystem\obj\Debug\net9.0\Fulcrum.ConfigSystem.pdb
 I:\vsd\Fulcrum\Fulcrum.ConfigSystem\obj\Debug\net9.0\ref\Fulcrum.ConfigSystem.dll
+I:\vsd\Fulcrum\Fulcrum.ConfigSystem\obj\Debug\net9.0\Fulcrum.ConfigSystem.sourcelink.json

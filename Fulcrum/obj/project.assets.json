@@ -1105,6 +1105,15 @@
           }
         }
       },
+      "CMLS.CLogger/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/CMLS.CLogger.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CMLS.CLogger.dll": {}
+        }
+      },
       "Fulcrum.Common/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
@@ -1135,8 +1144,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
-          "Fulcrum.Common": "1.0.0",
-          "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj": "1.0.0"
+          "CMLS.CLogger": "1.0.0",
+          "Fulcrum.Common": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Fulcrum.ConfigSystem.dll": {}
@@ -1165,11 +1174,11 @@
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "BepuPhysics": "2.5.0-beta.27",
+          "CMLS.CLogger": "1.0.0",
           "Fulcrum.Common": "1.0.0",
           "Fulcrum.ConfigSystem": "1.0.0",
           "Fulcrum.DefaultResources": "1.0.0",
           "Fulcrum.Scene": "1.0.0",
-          "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj": "1.0.0",
           "ImGui.NET": "1.91.6.1",
           "NAudio": "2.2.1",
           "NAudio.Vorbis": "1.5.0",
@@ -1195,7 +1204,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
-          "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj": "1.0.0"
+          "CMLS.CLogger": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Fulcrum.Scene.dll": {}
@@ -2334,6 +2343,15 @@
           }
         }
       },
+      "CMLS.CLogger/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/CMLS.CLogger.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CMLS.CLogger.dll": {}
+        }
+      },
       "Fulcrum.Common/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
@@ -2364,8 +2382,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
-          "Fulcrum.Common": "1.0.0",
-          "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj": "1.0.0"
+          "CMLS.CLogger": "1.0.0",
+          "Fulcrum.Common": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Fulcrum.ConfigSystem.dll": {}
@@ -2394,11 +2412,11 @@
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "BepuPhysics": "2.5.0-beta.27",
+          "CMLS.CLogger": "1.0.0",
           "Fulcrum.Common": "1.0.0",
           "Fulcrum.ConfigSystem": "1.0.0",
           "Fulcrum.DefaultResources": "1.0.0",
           "Fulcrum.Scene": "1.0.0",
-          "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj": "1.0.0",
           "ImGui.NET": "1.91.6.1",
           "NAudio": "2.2.1",
           "NAudio.Vorbis": "1.5.0",
@@ -2424,7 +2442,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
-          "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj": "1.0.0"
+          "CMLS.CLogger": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Fulcrum.Scene.dll": {}
@@ -4645,6 +4663,11 @@
         "vortice.mathematics.nuspec"
       ]
     },
+    "CMLS.CLogger/1.0.0": {
+      "type": "project",
+      "path": "../CLogger/CMLS.CLogger.csproj",
+      "msbuildProject": "../CLogger/CMLS.CLogger.csproj"
+    },
     "Fulcrum.Common/1.0.0": {
       "type": "project",
       "path": "../Fulcrum.Common/Fulcrum.Common.csproj",
@@ -4683,10 +4706,10 @@
   },
   "projectFileDependencyGroups": {
     "net9.0-windows7.0": [
+      "CMLS.CLogger >= 1.0.0",
       "Fulcrum.Common >= 1.0.0",
       "Fulcrum.ComprehensiveParser >= 1.0.0",
-      "Fulcrum.Engine >= 1.0.0",
-      "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj"
+      "Fulcrum.Engine >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -4790,17 +4813,5 @@
         "#import": []
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1105",
-      "level": "Error",
-      "message": "Unable to find project information for 'I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so run a restore from the command-line. Otherwise, the project file may be invalid or missing targets required for restore.",
-      "libraryId": "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj",
-      "targetGraphs": [
-        "net9.0-windows7.0",
-        "net9.0-windows7.0/win-x64"
-      ]
-    }
-  ]
+  }
 }

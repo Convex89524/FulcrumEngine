@@ -10,3 +10,4 @@ I:\vsd\Fulcrum\Veldrid.ImGui\obj\Debug\net9.0\Veldrid.ImGui.dll
 I:\vsd\Fulcrum\Veldrid.ImGui\obj\Debug\net9.0\refint\Veldrid.ImGui.dll
 I:\vsd\Fulcrum\Veldrid.ImGui\obj\Debug\net9.0\Veldrid.ImGui.pdb
 I:\vsd\Fulcrum\Veldrid.ImGui\obj\Debug\net9.0\ref\Veldrid.ImGui.dll
+I:\vsd\Fulcrum\Veldrid.ImGui\obj\Debug\net9.0\Veldrid.ImGui.sourcelink.json

@@ -14,3 +14,4 @@ I:\vsd\Fulcrum\Fulcrum.Scene\obj\Debug\net9.0\Fulcrum.Scene.dll
 I:\vsd\Fulcrum\Fulcrum.Scene\obj\Debug\net9.0\refint\Fulcrum.Scene.dll
 I:\vsd\Fulcrum\Fulcrum.Scene\obj\Debug\net9.0\Fulcrum.Scene.pdb
 I:\vsd\Fulcrum\Fulcrum.Scene\obj\Debug\net9.0\ref\Fulcrum.Scene.dll
+I:\vsd\Fulcrum\Fulcrum.Scene\obj\Debug\net9.0\Fulcrum.Scene.sourcelink.json

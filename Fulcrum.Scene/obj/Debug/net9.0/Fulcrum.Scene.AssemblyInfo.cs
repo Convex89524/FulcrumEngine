@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fulcrum.Scene")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29b9014ef313b2e074f4569562514ef59815e531")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0fcc4cade9a6cc30b51e56b256ff91ee8068e80a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fulcrum.Scene")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fulcrum.Scene")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

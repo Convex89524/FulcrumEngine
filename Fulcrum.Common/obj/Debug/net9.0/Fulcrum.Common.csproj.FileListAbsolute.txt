@@ -10,3 +10,4 @@ I:\vsd\Fulcrum\Fulcrum.Common\obj\Debug\net9.0\Fulcrum.Common.dll
 I:\vsd\Fulcrum\Fulcrum.Common\obj\Debug\net9.0\refint\Fulcrum.Common.dll
 I:\vsd\Fulcrum\Fulcrum.Common\obj\Debug\net9.0\Fulcrum.Common.pdb
 I:\vsd\Fulcrum\Fulcrum.Common\obj\Debug\net9.0\ref\Fulcrum.Common.dll
+I:\vsd\Fulcrum\Fulcrum.Common\obj\Debug\net9.0\Fulcrum.Common.sourcelink.json

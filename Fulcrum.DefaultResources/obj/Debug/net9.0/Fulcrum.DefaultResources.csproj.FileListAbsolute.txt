@@ -12,3 +12,4 @@ I:\vsd\Fulcrum\Fulcrum.DefaultResources\obj\Debug\net9.0\Fulcrum.DefaultResource
 I:\vsd\Fulcrum\Fulcrum.DefaultResources\obj\Debug\net9.0\refint\Fulcrum.DefaultResources.dll
 I:\vsd\Fulcrum\Fulcrum.DefaultResources\obj\Debug\net9.0\Fulcrum.DefaultResources.pdb
 I:\vsd\Fulcrum\Fulcrum.DefaultResources\obj\Debug\net9.0\ref\Fulcrum.DefaultResources.dll
+I:\vsd\Fulcrum\Fulcrum.DefaultResources\obj\Debug\net9.0\Fulcrum.DefaultResources.sourcelink.json

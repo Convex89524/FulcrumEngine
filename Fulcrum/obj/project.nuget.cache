@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "dCbFe96Wiv0=",
-  "success": false,
+  "dgSpecHash": "4jdTVeL64eE=",
+  "success": true,
   "projectFilePath": "I:\\vsd\\Fulcrum\\Fulcrum\\Fulcrum.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\bepuphysics\\2.5.0-beta.27\\bepuphysics.2.5.0-beta.27.nupkg.sha512",
@@ -81,16 +81,5 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\9.0.9\\microsoft.windowsdesktop.app.runtime.win-x64.9.0.9.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\9.0.9\\microsoft.aspnetcore.app.runtime.win-x64.9.0.9.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1105",
-      "level": "Error",
-      "message": "Unable to find project information for 'I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so run a restore from the command-line. Otherwise, the project file may be invalid or missing targets required for restore.",
-      "libraryId": "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj",
-      "targetGraphs": [
-        "net9.0-windows7.0",
-        "net9.0-windows7.0/win-x64"
-      ]
-    }
-  ]
+  "logs": []
 }
