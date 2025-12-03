@@ -16,10 +16,6 @@ FulcrumEngine provides a GameObject/Component framework, multi-threaded renderin
 
 # Third-Party Library Attribution List
 
-This document provides a condensed list of all third-party libraries used in the project, formatted as:
-
-**“LibraryName, Author: XXX, License: XXX”**
-
 ---
 
 ## **Apache-2.0 Licensed Components**
