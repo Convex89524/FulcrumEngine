@@ -1,0 +1,12 @@
+I:\vsd\Fulcrum\Fulcrum.Common\bin\Debug\net9.0\Fulcrum.Common.deps.json
+I:\vsd\Fulcrum\Fulcrum.Common\bin\Debug\net9.0\Fulcrum.Common.dll
+I:\vsd\Fulcrum\Fulcrum.Common\bin\Debug\net9.0\Fulcrum.Common.pdb
+I:\vsd\Fulcrum\Fulcrum.Common\obj\Debug\net9.0\Fulcrum.Common.csproj.AssemblyReference.cache
+I:\vsd\Fulcrum\Fulcrum.Common\obj\Debug\net9.0\Fulcrum.Common.GeneratedMSBuildEditorConfig.editorconfig
+I:\vsd\Fulcrum\Fulcrum.Common\obj\Debug\net9.0\Fulcrum.Common.AssemblyInfoInputs.cache
+I:\vsd\Fulcrum\Fulcrum.Common\obj\Debug\net9.0\Fulcrum.Common.AssemblyInfo.cs
+I:\vsd\Fulcrum\Fulcrum.Common\obj\Debug\net9.0\Fulcrum.Common.csproj.CoreCompileInputs.cache
+I:\vsd\Fulcrum\Fulcrum.Common\obj\Debug\net9.0\Fulcrum.Common.dll
+I:\vsd\Fulcrum\Fulcrum.Common\obj\Debug\net9.0\refint\Fulcrum.Common.dll
+I:\vsd\Fulcrum\Fulcrum.Common\obj\Debug\net9.0\Fulcrum.Common.pdb
+I:\vsd\Fulcrum\Fulcrum.Common\obj\Debug\net9.0\ref\Fulcrum.Common.dll

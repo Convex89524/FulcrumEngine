@@ -1,0 +1,538 @@
+{
+  "format": 1,
+  "restore": {
+    "I:\\vsd\\Fulcrum\\Fulcrum.Engine\\Fulcrum.Engine.csproj": {}
+  },
+  "projects": {
+    "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj": {
+      "restore": {
+        "projectUniqueName": "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj",
+        "projectName": "CMLS.CLogger",
+        "projectPath": "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj",
+        "UsingMicrosoftNETSdk": false,
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "I:\\vsd\\Fulcrum\\Fulcrum.Common\\Fulcrum.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "I:\\vsd\\Fulcrum\\Fulcrum.Common\\Fulcrum.Common.csproj",
+        "projectName": "Fulcrum.Common",
+        "projectPath": "I:\\vsd\\Fulcrum\\Fulcrum.Common\\Fulcrum.Common.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "I:\\vsd\\Fulcrum\\Fulcrum.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "I:\\CMLK\\.lib\\nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Veldrid.ImageSharp": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "I:\\vsd\\Fulcrum\\Fulcrum.ConfigSystem\\Fulcrum.ConfigSystem.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "I:\\vsd\\Fulcrum\\Fulcrum.ConfigSystem\\Fulcrum.ConfigSystem.csproj",
+        "projectName": "Fulcrum.ConfigSystem",
+        "projectPath": "I:\\vsd\\Fulcrum\\Fulcrum.ConfigSystem\\Fulcrum.ConfigSystem.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "I:\\vsd\\Fulcrum\\Fulcrum.ConfigSystem\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "I:\\CMLK\\.lib\\nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj": {
+                "projectPath": "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj"
+              },
+              "I:\\vsd\\Fulcrum\\Fulcrum.Common\\Fulcrum.Common.csproj": {
+                "projectPath": "I:\\vsd\\Fulcrum\\Fulcrum.Common\\Fulcrum.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "I:\\vsd\\Fulcrum\\Fulcrum.DefaultResources\\Fulcrum.DefaultResources.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "I:\\vsd\\Fulcrum\\Fulcrum.DefaultResources\\Fulcrum.DefaultResources.csproj",
+        "projectName": "Fulcrum.DefaultResources",
+        "projectPath": "I:\\vsd\\Fulcrum\\Fulcrum.DefaultResources\\Fulcrum.DefaultResources.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "I:\\vsd\\Fulcrum\\Fulcrum.DefaultResources\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "I:\\CMLK\\.lib\\nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "System.Resources.Extensions": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "Veldrid.ImageSharp": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "I:\\vsd\\Fulcrum\\Fulcrum.Engine\\Fulcrum.Engine.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "I:\\vsd\\Fulcrum\\Fulcrum.Engine\\Fulcrum.Engine.csproj",
+        "projectName": "Fulcrum.Engine",
+        "projectPath": "I:\\vsd\\Fulcrum\\Fulcrum.Engine\\Fulcrum.Engine.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "I:\\vsd\\Fulcrum\\Fulcrum.Engine\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "I:\\CMLK\\.lib\\nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj": {
+                "projectPath": "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj"
+              },
+              "I:\\vsd\\Fulcrum\\Fulcrum.Common\\Fulcrum.Common.csproj": {
+                "projectPath": "I:\\vsd\\Fulcrum\\Fulcrum.Common\\Fulcrum.Common.csproj"
+              },
+              "I:\\vsd\\Fulcrum\\Fulcrum.ConfigSystem\\Fulcrum.ConfigSystem.csproj": {
+                "projectPath": "I:\\vsd\\Fulcrum\\Fulcrum.ConfigSystem\\Fulcrum.ConfigSystem.csproj"
+              },
+              "I:\\vsd\\Fulcrum\\Fulcrum.DefaultResources\\Fulcrum.DefaultResources.csproj": {
+                "projectPath": "I:\\vsd\\Fulcrum\\Fulcrum.DefaultResources\\Fulcrum.DefaultResources.csproj"
+              },
+              "I:\\vsd\\Fulcrum\\Fulcrum.Scene\\Fulcrum.Scene.csproj": {
+                "projectPath": "I:\\vsd\\Fulcrum\\Fulcrum.Scene\\Fulcrum.Scene.csproj"
+              },
+              "I:\\vsd\\Fulcrum\\Veldrid.ImGui\\Veldrid.ImGui.csproj": {
+                "projectPath": "I:\\vsd\\Fulcrum\\Veldrid.ImGui\\Veldrid.ImGui.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "BepuPhysics": {
+              "target": "Package",
+              "version": "[2.5.0-beta.27, )"
+            },
+            "ImGui.NET": {
+              "target": "Package",
+              "version": "[1.91.6.1, )"
+            },
+            "NAudio": {
+              "target": "Package",
+              "version": "[2.2.1, )"
+            },
+            "NAudio.Vorbis": {
+              "target": "Package",
+              "version": "[1.5.0, )"
+            },
+            "SharpEXR": {
+              "target": "Package",
+              "version": "[1.0.0.19, )"
+            },
+            "Silk.NET.OpenAL.Extensions.Soft": {
+              "target": "Package",
+              "version": "[2.22.0, )"
+            },
+            "System.Runtime.InteropServices": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "Veldrid": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            },
+            "Veldrid.ImageSharp": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            },
+            "Veldrid.SDL2": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            },
+            "Veldrid.SPIRV": {
+              "target": "Package",
+              "version": "[1.0.15, )"
+            },
+            "Veldrid.StartupUtilities": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            },
+            "Veldrid.Utilities": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "I:\\vsd\\Fulcrum\\Fulcrum.Scene\\Fulcrum.Scene.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "I:\\vsd\\Fulcrum\\Fulcrum.Scene\\Fulcrum.Scene.csproj",
+        "projectName": "Fulcrum.Scene",
+        "projectPath": "I:\\vsd\\Fulcrum\\Fulcrum.Scene\\Fulcrum.Scene.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "I:\\vsd\\Fulcrum\\Fulcrum.Scene\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "I:\\CMLK\\.lib\\nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj": {
+                "projectPath": "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "I:\\vsd\\Fulcrum\\Veldrid.ImGui\\Veldrid.ImGui.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "I:\\vsd\\Fulcrum\\Veldrid.ImGui\\Veldrid.ImGui.csproj",
+        "projectName": "Veldrid.ImGui",
+        "projectPath": "I:\\vsd\\Fulcrum\\Veldrid.ImGui\\Veldrid.ImGui.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "I:\\vsd\\Fulcrum\\Veldrid.ImGui\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "I:\\CMLK\\.lib\\nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "ImGui.NET": {
+              "target": "Package",
+              "version": "[1.91.6.1, )"
+            },
+            "Veldrid": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            },
+            "Veldrid.SDL2": {
+              "target": "Package",
+              "version": "[4.9.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

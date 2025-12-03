@@ -1,0 +1,12 @@
+I:\vsd\Fulcrum\Fulcrum.ComprehensiveParser\bin\Debug\net9.0\Fulcrum.ComprehensiveParser.deps.json
+I:\vsd\Fulcrum\Fulcrum.ComprehensiveParser\bin\Debug\net9.0\Fulcrum.ComprehensiveParser.dll
+I:\vsd\Fulcrum\Fulcrum.ComprehensiveParser\bin\Debug\net9.0\Fulcrum.ComprehensiveParser.pdb
+I:\vsd\Fulcrum\Fulcrum.ComprehensiveParser\obj\Debug\net9.0\Fulcrum.ComprehensiveParser.csproj.AssemblyReference.cache
+I:\vsd\Fulcrum\Fulcrum.ComprehensiveParser\obj\Debug\net9.0\Fulcrum.ComprehensiveParser.GeneratedMSBuildEditorConfig.editorconfig
+I:\vsd\Fulcrum\Fulcrum.ComprehensiveParser\obj\Debug\net9.0\Fulcrum.ComprehensiveParser.AssemblyInfoInputs.cache
+I:\vsd\Fulcrum\Fulcrum.ComprehensiveParser\obj\Debug\net9.0\Fulcrum.ComprehensiveParser.AssemblyInfo.cs
+I:\vsd\Fulcrum\Fulcrum.ComprehensiveParser\obj\Debug\net9.0\Fulcrum.ComprehensiveParser.csproj.CoreCompileInputs.cache
+I:\vsd\Fulcrum\Fulcrum.ComprehensiveParser\obj\Debug\net9.0\Fulcrum.ComprehensiveParser.dll
+I:\vsd\Fulcrum\Fulcrum.ComprehensiveParser\obj\Debug\net9.0\refint\Fulcrum.ComprehensiveParser.dll
+I:\vsd\Fulcrum\Fulcrum.ComprehensiveParser\obj\Debug\net9.0\Fulcrum.ComprehensiveParser.pdb
+I:\vsd\Fulcrum\Fulcrum.ComprehensiveParser\obj\Debug\net9.0\ref\Fulcrum.ComprehensiveParser.dll

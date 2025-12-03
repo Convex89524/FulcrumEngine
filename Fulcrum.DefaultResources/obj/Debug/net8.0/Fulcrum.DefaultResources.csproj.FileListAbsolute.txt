@@ -1,0 +1,14 @@
+I:\vsd\Fulcrum\Fulcrum.DefaultResources\bin\Debug\net8.0\Fulcrum.DefaultResources.deps.json
+I:\vsd\Fulcrum\Fulcrum.DefaultResources\bin\Debug\net8.0\Fulcrum.DefaultResources.dll
+I:\vsd\Fulcrum\Fulcrum.DefaultResources\bin\Debug\net8.0\Fulcrum.DefaultResources.pdb
+I:\vsd\Fulcrum\Fulcrum.DefaultResources\obj\Debug\net8.0\Fulcrum.DefaultResources.GeneratedMSBuildEditorConfig.editorconfig
+I:\vsd\Fulcrum\Fulcrum.DefaultResources\obj\Debug\net8.0\Fulcrum.DefaultResources.AssemblyInfoInputs.cache
+I:\vsd\Fulcrum\Fulcrum.DefaultResources\obj\Debug\net8.0\Fulcrum.DefaultResources.AssemblyInfo.cs
+I:\vsd\Fulcrum\Fulcrum.DefaultResources\obj\Debug\net8.0\Fulcrum.DefaultResources.csproj.CoreCompileInputs.cache
+I:\vsd\Fulcrum\Fulcrum.DefaultResources\obj\Debug\net8.0\Fulcrum.DefaultResources.dll
+I:\vsd\Fulcrum\Fulcrum.DefaultResources\obj\Debug\net8.0\refint\Fulcrum.DefaultResources.dll
+I:\vsd\Fulcrum\Fulcrum.DefaultResources\obj\Debug\net8.0\Fulcrum.DefaultResources.pdb
+I:\vsd\Fulcrum\Fulcrum.DefaultResources\obj\Debug\net8.0\ref\Fulcrum.DefaultResources.dll
+I:\vsd\Fulcrum\Fulcrum.DefaultResources\obj\Debug\net8.0\Fulcrum.DefaultResources.csproj.AssemblyReference.cache
+I:\vsd\Fulcrum\Fulcrum.DefaultResources\obj\Debug\net8.0\Fulcrum.DefaultResources.Resources1.resources
+I:\vsd\Fulcrum\Fulcrum.DefaultResources\obj\Debug\net8.0\Fulcrum.DefaultResources.csproj.GenerateResource.cache

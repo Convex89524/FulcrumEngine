@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepuPhysics" Version="2.5.0-beta.27" />
+    <PackageReference Include="ImGui.NET" Version="1.91.6.1" />
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="NAudio.Vorbis" Version="1.5.0" />
+    <PackageReference Include="SharpEXR" Version="1.0.0.19" />
+    <PackageReference Include="Silk.NET.OpenAL.Extensions.Soft" Version="2.22.0" />
+    <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
+    <PackageReference Include="Veldrid" Version="4.9.0" />
+    <PackageReference Include="Veldrid.ImageSharp" Version="4.9.0" />
+    <PackageReference Include="Veldrid.SDL2" Version="4.9.0" />
+    <PackageReference Include="Veldrid.SPIRV" Version="1.0.15" />
+    <PackageReference Include="Veldrid.StartupUtilities" Version="4.9.0" />
+    <PackageReference Include="Veldrid.Utilities" Version="4.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\.vs_lib\CLogger\CMLS.CLogger.csproj" />
+    <ProjectReference Include="..\Fulcrum.Common\Fulcrum.Common.csproj" />
+    <ProjectReference Include="..\Fulcrum.ConfigSystem\Fulcrum.ConfigSystem.csproj" />
+    <ProjectReference Include="..\Fulcrum.DefaultResources\Fulcrum.DefaultResources.csproj" />
+    <ProjectReference Include="..\Fulcrum.Scene\Fulcrum.Scene.csproj" />
+    <ProjectReference Include="..\Veldrid.ImGui\Veldrid.ImGui.csproj" />
+  </ItemGroup>
+
+</Project>

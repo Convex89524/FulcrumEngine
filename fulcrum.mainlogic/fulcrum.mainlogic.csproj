@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+        
+        <OutputPath>..\Fulcrum\bin\Debug\net9.0-windows\fulcrum\bin</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\.vs_lib\CLogger\CMLS.CLogger.csproj" />
+      <ProjectReference Include="..\Fulcrum.Engine\Fulcrum.Engine.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,12 @@
+I:\vsd\Fulcrum\Veldrid.ImGui\obj\Debug\net8.0\Veldrid.ImGui.csproj.AssemblyReference.cache
+I:\vsd\Fulcrum\Veldrid.ImGui\obj\Debug\net8.0\Veldrid.ImGui.GeneratedMSBuildEditorConfig.editorconfig
+I:\vsd\Fulcrum\Veldrid.ImGui\obj\Debug\net8.0\Veldrid.ImGui.AssemblyInfoInputs.cache
+I:\vsd\Fulcrum\Veldrid.ImGui\obj\Debug\net8.0\Veldrid.ImGui.AssemblyInfo.cs
+I:\vsd\Fulcrum\Veldrid.ImGui\obj\Debug\net8.0\Veldrid.ImGui.csproj.CoreCompileInputs.cache
+I:\vsd\Fulcrum\Veldrid.ImGui\bin\Debug\net8.0\Veldrid.ImGui.deps.json
+I:\vsd\Fulcrum\Veldrid.ImGui\bin\Debug\net8.0\Veldrid.ImGui.dll
+I:\vsd\Fulcrum\Veldrid.ImGui\bin\Debug\net8.0\Veldrid.ImGui.pdb
+I:\vsd\Fulcrum\Veldrid.ImGui\obj\Debug\net8.0\Veldrid.ImGui.dll
+I:\vsd\Fulcrum\Veldrid.ImGui\obj\Debug\net8.0\refint\Veldrid.ImGui.dll
+I:\vsd\Fulcrum\Veldrid.ImGui\obj\Debug\net8.0\Veldrid.ImGui.pdb
+I:\vsd\Fulcrum\Veldrid.ImGui\obj\Debug\net8.0\ref\Veldrid.ImGui.dll

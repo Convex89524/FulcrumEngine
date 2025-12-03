@@ -1,0 +1,16 @@
+I:\vsd\Fulcrum\Fulcrum.Scene\bin\Debug\net8.0\Fulcrum.Scene.deps.json
+I:\vsd\Fulcrum\Fulcrum.Scene\bin\Debug\net8.0\Fulcrum.Scene.dll
+I:\vsd\Fulcrum\Fulcrum.Scene\bin\Debug\net8.0\Fulcrum.Scene.pdb
+I:\vsd\Fulcrum\Fulcrum.Scene\bin\Debug\net8.0\CLogger.dll
+I:\vsd\Fulcrum\Fulcrum.Scene\bin\Debug\net8.0\CLogger.pdb
+I:\vsd\Fulcrum\Fulcrum.Scene\bin\Debug\net8.0\CLogger.dll.config
+I:\vsd\Fulcrum\Fulcrum.Scene\obj\Debug\net8.0\Fulcrum.Scene.csproj.AssemblyReference.cache
+I:\vsd\Fulcrum\Fulcrum.Scene\obj\Debug\net8.0\Fulcrum.Scene.GeneratedMSBuildEditorConfig.editorconfig
+I:\vsd\Fulcrum\Fulcrum.Scene\obj\Debug\net8.0\Fulcrum.Scene.AssemblyInfoInputs.cache
+I:\vsd\Fulcrum\Fulcrum.Scene\obj\Debug\net8.0\Fulcrum.Scene.AssemblyInfo.cs
+I:\vsd\Fulcrum\Fulcrum.Scene\obj\Debug\net8.0\Fulcrum.Scene.csproj.CoreCompileInputs.cache
+I:\vsd\Fulcrum\Fulcrum.Scene\obj\Debug\net8.0\Fulcrum..CB531196.Up2Date
+I:\vsd\Fulcrum\Fulcrum.Scene\obj\Debug\net8.0\Fulcrum.Scene.dll
+I:\vsd\Fulcrum\Fulcrum.Scene\obj\Debug\net8.0\refint\Fulcrum.Scene.dll
+I:\vsd\Fulcrum\Fulcrum.Scene\obj\Debug\net8.0\Fulcrum.Scene.pdb
+I:\vsd\Fulcrum\Fulcrum.Scene\obj\Debug\net8.0\ref\Fulcrum.Scene.dll

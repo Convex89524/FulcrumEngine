@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Fulcrum.Launcher​​": {
+      "commandName": "Project",
+      "commandLineArgs": "-g \"fulcrum\"",
+      "workingDirectory": "I:\\vsd\\Fulcrum\\Fulcrum\\bin\\Debug\\net9.0-windows"
+    }
+  }
+}

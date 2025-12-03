@@ -1,0 +1,13 @@
+I:\vsd\Fulcrum\fulcrum.mainlogic\obj\Debug\net8.0\fulcrum.mainlogic.GeneratedMSBuildEditorConfig.editorconfig
+I:\vsd\Fulcrum\fulcrum.mainlogic\obj\Debug\net8.0\fulcrum.mainlogic.AssemblyInfoInputs.cache
+I:\vsd\Fulcrum\fulcrum.mainlogic\obj\Debug\net8.0\fulcrum.mainlogic.AssemblyInfo.cs
+I:\vsd\Fulcrum\fulcrum.mainlogic\obj\Debug\net8.0\fulcrum.mainlogic.csproj.CoreCompileInputs.cache
+I:\vsd\Fulcrum\fulcrum.mainlogic\obj\Debug\net8.0\fulcrum.mainlogic.dll
+I:\vsd\Fulcrum\fulcrum.mainlogic\obj\Debug\net8.0\refint\fulcrum.mainlogic.dll
+I:\vsd\Fulcrum\fulcrum.mainlogic\obj\Debug\net8.0\fulcrum.mainlogic.pdb
+I:\vsd\Fulcrum\fulcrum.mainlogic\obj\Debug\net8.0\ref\fulcrum.mainlogic.dll
+I:\vsd\Fulcrum\Fulcrum\bin\Debug\net8.0-windows\fulcrum\bin\net8.0\fulcrum.mainlogic.deps.json
+I:\vsd\Fulcrum\Fulcrum\bin\Debug\net8.0-windows\fulcrum\bin\net8.0\fulcrum.mainlogic.dll
+I:\vsd\Fulcrum\Fulcrum\bin\Debug\net8.0-windows\fulcrum\bin\net8.0\fulcrum.mainlogic.pdb
+I:\vsd\Fulcrum\fulcrum.mainlogic\obj\Debug\net8.0\fulcrum.mainlogic.csproj.AssemblyReference.cache
+I:\vsd\Fulcrum\fulcrum.mainlogic\obj\Debug\net8.0\fulcrum..B2096EA9.Up2Date

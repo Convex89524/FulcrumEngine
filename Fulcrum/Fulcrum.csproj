@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	  <RootNamespace>Fulcrum.Launcher</RootNamespace>
+
+    <DebugType>None</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    
+    <SelfContained>true</SelfContained>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\.vs_lib\CLogger\CMLS.CLogger.csproj" />
+    <ProjectReference Include="..\Fulcrum.Common\Fulcrum.Common.csproj" />
+    <ProjectReference Include="..\Fulcrum.ComprehensiveParser\Fulcrum.ComprehensiveParser.csproj" />
+    <ProjectReference Include="..\Fulcrum.Engine\Fulcrum.Engine.csproj" />
+  </ItemGroup>
+
+</Project>
