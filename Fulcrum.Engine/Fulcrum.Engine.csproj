@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\.vs_lib\CLogger\CMLS.CLogger.csproj" />
+    <ProjectReference Include="..\CLogger\CMLS.CLogger.csproj" />
     <ProjectReference Include="..\Fulcrum.Common\Fulcrum.Common.csproj" />
     <ProjectReference Include="..\Fulcrum.ConfigSystem\Fulcrum.ConfigSystem.csproj" />
     <ProjectReference Include="..\Fulcrum.DefaultResources\Fulcrum.DefaultResources.csproj" />

@@ -1,28 +1,12 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {
-      "CMLS.CLogger/1.0.0": {
-        "type": "project",
-        "compile": {
-          "bin/placeholder/CMLS.CLogger.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CMLS.CLogger.dll": {}
-        }
-      }
-    }
+    "net9.0": {}
   },
-  "libraries": {
-    "CMLS.CLogger/1.0.0": {
-      "type": "project",
-      "path": "../../../.vs_lib/CLogger/CMLS.CLogger.csproj",
-      "msbuildProject": "../../../.vs_lib/CLogger/CMLS.CLogger.csproj"
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
     "net9.0": [
-      "CMLS.CLogger >= 1.0.0"
+      "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj"
     ]
   },
   "packageFolders": {
@@ -58,8 +42,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj": {
-              "projectPath": "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj"
+            "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj": {
+              "projectPath": "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj"
             }
           }
         }
@@ -98,5 +82,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1105",
+      "level": "Error",
+      "message": "Unable to find project information for 'I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so run a restore from the command-line. Otherwise, the project file may be invalid or missing targets required for restore.",
+      "libraryId": "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    }
+  ]
 }

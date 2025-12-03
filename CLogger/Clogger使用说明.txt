@@ -1,0 +1,13 @@
+我们目前已有一个官方的Clogger库。
+
+使用Clogger（通过"using CMLS.CLogger;"调库，在类中进行"private static Clogger logger = LogManager.GetLogger("xxx")"进行赋值logger变量，使用"logger.Info("[信息]")"、logger.Warn("[信息]")、logger.Error("[信息]")、logger.Trace("[信息]")、logger.Debug("[信息]")，调用）
+
+通过以下配置日志系统(通用，这只是在Main中使用的)：
+private static void init()
+{
+	var composite = new CompositeAppender();
+	composite.AddAppender(new ConsoleAppender());
+	composite.AddAppender(new FileAppender(@".\logs"));
+	LogManager.Configure(LogLevel.DEBUG, composite);
+	Clogger.SetGlobalLevel(LogLevel.DEBUG);
+}

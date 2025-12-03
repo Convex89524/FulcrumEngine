@@ -1,0 +1,6 @@
+K:\vsd\cmls\CLogger\bin\Debug\CLogger.dll
+K:\vsd\cmls\CLogger\bin\Debug\CLogger.pdb
+K:\vsd\cmls\CLogger\obj\Debug\CLogger.csproj.AssemblyReference.cache
+K:\vsd\cmls\CLogger\obj\Debug\CLogger.csproj.CoreCompileInputs.cache
+K:\vsd\cmls\CLogger\obj\Debug\CLogger.dll
+K:\vsd\cmls\CLogger\obj\Debug\CLogger.pdb

@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\.vs_lib\CLogger\CMLS.CLogger.csproj" />
+        <ProjectReference Include="..\CLogger\CMLS.CLogger.csproj" />
     </ItemGroup>
 
 </Project>

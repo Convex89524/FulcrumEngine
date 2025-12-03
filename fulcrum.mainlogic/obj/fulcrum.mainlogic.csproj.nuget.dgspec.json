@@ -4,22 +4,6 @@
     "I:\\vsd\\Fulcrum\\fulcrum.mainlogic\\fulcrum.mainlogic.csproj": {}
   },
   "projects": {
-    "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj": {
-      "restore": {
-        "projectUniqueName": "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj",
-        "projectName": "CMLS.CLogger",
-        "projectPath": "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj",
-        "UsingMicrosoftNETSdk": false,
-        "frameworks": {
-          "net472": {
-            "projectReferences": {}
-          }
-        }
-      },
-      "frameworks": {
-        "net472": {}
-      }
-    },
     "I:\\vsd\\Fulcrum\\Fulcrum.Common\\Fulcrum.Common.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -121,8 +105,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj": {
-                "projectPath": "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj"
+              "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj": {
+                "projectPath": "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj"
               },
               "I:\\vsd\\Fulcrum\\Fulcrum.Common\\Fulcrum.Common.csproj": {
                 "projectPath": "I:\\vsd\\Fulcrum\\Fulcrum.Common\\Fulcrum.Common.csproj"
@@ -274,8 +258,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj": {
-                "projectPath": "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj"
+              "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj": {
+                "projectPath": "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj"
               },
               "I:\\vsd\\Fulcrum\\Fulcrum.Common\\Fulcrum.Common.csproj": {
                 "projectPath": "I:\\vsd\\Fulcrum\\Fulcrum.Common\\Fulcrum.Common.csproj"
@@ -413,8 +397,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj": {
-                "projectPath": "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj"
+              "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj": {
+                "projectPath": "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj"
               },
               "I:\\vsd\\Fulcrum\\Fulcrum.Engine\\Fulcrum.Engine.csproj": {
                 "projectPath": "I:\\vsd\\Fulcrum\\Fulcrum.Engine\\Fulcrum.Engine.csproj"
@@ -486,8 +470,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj": {
-                "projectPath": "I:\\.vs_lib\\CLogger\\CMLS.CLogger.csproj"
+              "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj": {
+                "projectPath": "I:\\vsd\\Fulcrum\\CLogger\\CMLS.CLogger.csproj"
               }
             }
           }

@@ -11,7 +11,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\.vs_lib\CLogger\CMLS.CLogger.csproj" />
+        <ProjectReference Include="..\CLogger\CMLS.CLogger.csproj" />
       <ProjectReference Include="..\Fulcrum.Engine\Fulcrum.Engine.csproj" />
     </ItemGroup>
 
