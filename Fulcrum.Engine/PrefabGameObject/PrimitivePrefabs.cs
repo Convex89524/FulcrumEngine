@@ -1,7 +1,8 @@
 ﻿// Copyright (C) 2025-2029 Convex89524
 // 
 // This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
+// it under the terms of the GNU General Public License
+// as published by
 // the Free Software Foundation, version 3 (GPLv3 only).
 // 
 // This program is distributed in the hope that it will be useful,
@@ -13,11 +14,11 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 using System;
-using System.Collections.Generic;
 using System.Numerics;
 using Fulcrum.Engine.Scene;
 using Fulcrum.Engine.GameObjectComponent;
 using Fulcrum.Engine.Render;
+using Fulcrum.Engine.GameObjectComponent.Phys;
 
 namespace Fulcrum.Engine.PrefabGameObject
 {
@@ -32,9 +33,16 @@ namespace Fulcrum.Engine.PrefabGameObject
                 UpdateMesh();
             }
         }
+        
+        public bool IsKinematic
+        {
+            get => _rigidBody.IsKinematic;
+            set => _rigidBody.IsKinematic = value;
+        }
 
         private Vector3 _size;
         private MeshRenderer _meshRenderer;
+        private RigidBodyComponent _rigidBody;
 
         public Cube(string name = "Cube", Vector3? size = null) : base(name)
         {
@@ -50,6 +58,12 @@ namespace Fulcrum.Engine.PrefabGameObject
         private void Build()
         {
             _meshRenderer = AddComponent<MeshRenderer>();
+
+            _rigidBody = AddComponent<RigidBodyComponent>();
+            _rigidBody.Size = _size;
+            _rigidBody.Mass = 1f;
+            _rigidBody.IsKinematic = false;
+
             UpdateMesh();
         }
 
@@ -100,15 +114,31 @@ namespace Fulcrum.Engine.PrefabGameObject
 
             var idx = new ushort[]
             {
-                0,1,2, 0,2,3,       // 前
-                4,5,6, 4,6,7,       // 后
-                8,9,10, 8,10,11,    // 左
-                12,13,14, 12,14,15, // 右
-                16,17,18, 16,18,19, // 上
-                20,21,22, 20,22,23  // 下
+                // 前
+                0,2,1,  0,3,2,
+    
+                // 后
+                4,6,5,  4,7,6,
+
+                // 左
+                8,10,9, 8,11,10,
+
+                // 右
+                12,14,13, 12,15,14,
+
+                // 上
+                16,18,17, 16,19,18,
+
+                // 下
+                20,22,21, 20,23,22
             };
 
             _meshRenderer.SetMesh(v, idx);
+
+            if (_rigidBody != null)
+            {
+                _rigidBody.Size = _size;
+            }
         }
 
         private static VertexPositionNormalTexture V(
@@ -131,6 +161,7 @@ namespace Fulcrum.Engine.PrefabGameObject
     public class Sphere : GameObject
     {
         private MeshRenderer _meshRenderer;
+        private RigidBodyComponent _rigidBody;
 
         public float Radius
         {
@@ -161,6 +192,12 @@ namespace Fulcrum.Engine.PrefabGameObject
                 UpdateMesh();
             }
         }
+        
+        public bool IsKinematic
+        {
+            get => _rigidBody.IsKinematic;
+            set => _rigidBody.IsKinematic = value;
+        }
 
         private float _radius;
         private int _latSegments;
@@ -174,6 +211,13 @@ namespace Fulcrum.Engine.PrefabGameObject
             _lonSegments = lonSegments;
 
             _meshRenderer = AddComponent<MeshRenderer>();
+
+            _rigidBody = AddComponent<RigidBodyComponent>();
+            _rigidBody.ShapeType = ColliderShapeType.Sphere;
+            _rigidBody.Size = new Vector3(_radius * 2f, _radius * 2f, _radius * 2f);
+            _rigidBody.Mass = 1f;
+            _rigidBody.IsKinematic = false;
+
             UpdateMesh();
         }
         
@@ -243,6 +287,12 @@ namespace Fulcrum.Engine.PrefabGameObject
             }
 
             _meshRenderer.SetMesh(vertices.ToArray(), indices.ToArray());
+
+            if (_rigidBody != null)
+            {
+                float d = _radius * 2f;
+                _rigidBody.Size = new Vector3(d, d, d);
+            }
         }
     }
 
@@ -252,6 +302,7 @@ namespace Fulcrum.Engine.PrefabGameObject
     public class Cylinder : GameObject
     {
         private MeshRenderer _meshRenderer;
+        private RigidBodyComponent _rigidBody;
 
         public float Radius
         {
@@ -283,6 +334,12 @@ namespace Fulcrum.Engine.PrefabGameObject
             }
         }
 
+        public bool IsKinematic
+        {
+            get => _rigidBody.IsKinematic;
+            set => _rigidBody.IsKinematic = value;
+        }
+
         private float _radius;
         private float _height;
         private int _segments;
@@ -295,6 +352,13 @@ namespace Fulcrum.Engine.PrefabGameObject
             _segments = segments;
 
             _meshRenderer = AddComponent<MeshRenderer>();
+
+            _rigidBody = AddComponent<RigidBodyComponent>();
+            _rigidBody.ShapeType = ColliderShapeType.Cylinder;
+            _rigidBody.Size = new Vector3(_radius * 2f, _height, _radius * 2f);
+            _rigidBody.Mass = 1f;
+            _rigidBody.IsKinematic = false;
+
             UpdateMesh();
         }
         
@@ -435,6 +499,12 @@ namespace Fulcrum.Engine.PrefabGameObject
             }
 
             _meshRenderer.SetMesh(vertices.ToArray(), indices.ToArray());
+
+            // 更新包围盒
+            if (_rigidBody != null)
+            {
+                _rigidBody.Size = new Vector3(_radius * 2f, _height, _radius * 2f);
+            }
         }
     }
 
@@ -444,6 +514,7 @@ namespace Fulcrum.Engine.PrefabGameObject
     public class TriangularPrism : GameObject
     {
         private MeshRenderer _meshRenderer;
+        private RigidBodyComponent _rigidBody;
 
         /// <summary>底面宽度 (X)</summary>
         public float Width
@@ -465,6 +536,13 @@ namespace Fulcrum.Engine.PrefabGameObject
             get => _depth;
             set { _depth = value; UpdateMesh(); }
         }
+        
+        public bool IsKinematic
+        {
+            get => _rigidBody.IsKinematic;
+            set => _rigidBody.IsKinematic = value;
+        }
+
 
         private float _width;
         private float _height;
@@ -479,6 +557,13 @@ namespace Fulcrum.Engine.PrefabGameObject
             _depth  = depth;
 
             _meshRenderer = AddComponent<MeshRenderer>();
+
+            _rigidBody = AddComponent<RigidBodyComponent>();
+            _rigidBody.ShapeType = ColliderShapeType.TriangularPrism;
+            _rigidBody.Size = new Vector3(_width, _height, _depth);
+            _rigidBody.Mass = 1f;
+            _rigidBody.IsKinematic = false;
+
             UpdateMesh();
         }
         
@@ -599,6 +684,11 @@ namespace Fulcrum.Engine.PrefabGameObject
             }
 
             _meshRenderer.SetMesh(vertices.ToArray(), indices.ToArray());
+
+            if (_rigidBody != null)
+            {
+                _rigidBody.Size = new Vector3(_width, _height, _depth);
+            }
         }
 
         private static Vector3 ComputeNormal(Vector3 a, Vector3 b, Vector3 c)
@@ -627,11 +717,18 @@ namespace Fulcrum.Engine.PrefabGameObject
     public class Wedge : GameObject
     {
         private MeshRenderer _meshRenderer;
+        private RigidBodyComponent _rigidBody;
 
         public Vector3 Size
         {
             get => _size;
             set { _size = value; UpdateMesh(); }
+        }
+        
+        public bool IsKinematic
+        {
+            get => _rigidBody.IsKinematic;
+            set => _rigidBody.IsKinematic = value;
         }
 
         private Vector3 _size;
@@ -640,6 +737,13 @@ namespace Fulcrum.Engine.PrefabGameObject
         {
             _size = size ?? new Vector3(1, 1, 1);
             _meshRenderer = AddComponent<MeshRenderer>();
+
+            _rigidBody = AddComponent<RigidBodyComponent>();
+            _rigidBody.ShapeType = ColliderShapeType.Wedge;
+            _rigidBody.Size = _size;
+            _rigidBody.Mass = 1f;
+            _rigidBody.IsKinematic = false;
+
             UpdateMesh();
         }
         
@@ -665,6 +769,7 @@ namespace Fulcrum.Engine.PrefabGameObject
             var vertices = new List<VertexPositionNormalTexture>();
             var indices  = new List<ushort>();
 
+            // 底面
             {
                 Vector3 v0 = b3, v1 = b2, v2 = b1, v3 = b0;
                 Vector3 n = ComputeNormal(v0, v1, v2);
@@ -679,6 +784,7 @@ namespace Fulcrum.Engine.PrefabGameObject
                 indices.Add((ushort)s); indices.Add((ushort)(s + 2)); indices.Add((ushort)(s + 3));
             }
 
+            // 斜面（顶边 t0-t1 与底边 b2-b3）
             {
                 Vector3 v0 = t0, v1 = t1, v2 = b2, v3 = b3;
                 Vector3 n = ComputeNormal(v0, v1, v2);
@@ -693,6 +799,7 @@ namespace Fulcrum.Engine.PrefabGameObject
                 indices.Add((ushort)s); indices.Add((ushort)(s + 2)); indices.Add((ushort)(s + 3));
             }
 
+            // 侧面1：t0-b3-b0（三角形）
             {
                 Vector3 v0 = t0, v1 = b3, v2 = b0;
                 Vector3 n = ComputeNormal(v0, v1, v2);
@@ -705,6 +812,7 @@ namespace Fulcrum.Engine.PrefabGameObject
                 indices.Add((ushort)s); indices.Add((ushort)(s + 1)); indices.Add((ushort)(s + 2));
             }
 
+            // 侧面2：b1-b2-t1（三角形）
             {
                 Vector3 v0 = b1, v1 = b2, v2 = t1;
                 Vector3 n = ComputeNormal(v0, v1, v2);
@@ -717,6 +825,7 @@ namespace Fulcrum.Engine.PrefabGameObject
                 indices.Add((ushort)s); indices.Add((ushort)(s + 1)); indices.Add((ushort)(s + 2));
             }
 
+            // 背面：b0-b1-t1-t0
             {
                 Vector3 v0 = b0, v1 = b1, v2 = t1, v3 = t0;
                 Vector3 n = ComputeNormal(v0, v1, v2);
@@ -732,6 +841,11 @@ namespace Fulcrum.Engine.PrefabGameObject
             }
 
             _meshRenderer.SetMesh(vertices.ToArray(), indices.ToArray());
+
+            if (_rigidBody != null)
+            {
+                _rigidBody.Size = _size;
+            }
         }
         
         private static Vector3 ComputeNormal(Vector3 a, Vector3 b, Vector3 c)

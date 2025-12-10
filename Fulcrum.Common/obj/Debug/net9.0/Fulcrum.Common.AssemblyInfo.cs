@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fulcrum.Common")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0fcc4cade9a6cc30b51e56b256ff91ee8068e80a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2221a01261d382217fada0e4642f784f5f2e3a25")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fulcrum.Common")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fulcrum.Common")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

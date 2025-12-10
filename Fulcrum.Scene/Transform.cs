@@ -1,8 +1,8 @@
 ﻿// Copyright (C) 2025-2029 Convex89524
 // 
 // This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, version 3 (GPLv3 only).
+// it under the terms of the GNU General Public License
+// as published by the Free Software Foundation, version 3 (GPLv3 only).
 // 
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -19,21 +19,33 @@ namespace Fulcrum.Engine.Scene
 {
     public class Transform
     {
-        // —— 基础存储（本地空间）——
         private Vector3 _localPosition = Vector3.Zero;
         private Quaternion _localRotation = Quaternion.Identity;
         private Vector3 _localScale = Vector3.One;
 
-        // —— 关联对象（用于取父节点）——
         public GameObject Owner { get; internal set; }
 
-        // —— 矩阵缓存与脏标记 —— 
         private bool _dirtyLocal = true;
         private bool _dirtyWorld = true;
         private Matrix4x4 _localMatrix = Matrix4x4.Identity;
         private Matrix4x4 _worldMatrix = Matrix4x4.Identity;
+        
+        public event Action<Transform> Changed;
 
-        /// <summary>父节点 Transform</summary>
+        private int _suppressChangedCounter = 0;
+        public void BeginExternalUpdate()
+        {
+            _suppressChangedCounter++;
+        }
+        public void EndExternalUpdate()
+        {
+            if (_suppressChangedCounter > 0)
+                _suppressChangedCounter--;
+        }
+
+
+        internal bool _isUpdatingFromPhysics = false;
+
         public Transform Parent => Owner?.Parent?.Transform;
 
         #region 本地属性（源数据）
@@ -43,14 +55,12 @@ namespace Fulcrum.Engine.Scene
             set { _localPosition = value; SetDirty(); }
         }
 
-        /// <summary>本地旋转（四元数）</summary>
         public Quaternion LocalRotation
         {
             get => _localRotation;
             set { _localRotation = NormalizeSafe(value); SetDirty(); }
         }
 
-        /// <summary>本地欧拉角（度）</summary>
         public Vector3 LocalEulerAngles
         {
             get => ToEulerDegrees(_localRotation);
@@ -65,7 +75,6 @@ namespace Fulcrum.Engine.Scene
         #endregion
 
         #region 世界属性（便捷）
-        /// <summary>世界矩阵（Local 累乘父节点）</summary>
         public Matrix4x4 LocalToWorldMatrix
         {
             get
@@ -85,7 +94,6 @@ namespace Fulcrum.Engine.Scene
             }
         }
 
-        /// <summary>世界位置</summary>
         public Vector3 Position
         {
             get
@@ -108,7 +116,6 @@ namespace Fulcrum.Engine.Scene
             }
         }
 
-        /// <summary>世界旋转（四元数）</summary>
         public Quaternion Rotation
         {
             get
@@ -137,14 +144,12 @@ namespace Fulcrum.Engine.Scene
             }
         }
 
-        /// <summary>世界欧拉角（度）</summary>
         public Vector3 EulerAngles
         {
             get => ToEulerDegrees(Rotation);
             set => Rotation = FromEulerDegrees(value);
         }
 
-        /// <summary>世界缩放（LossyScale，父子相乘的分量近似）</summary>
         public Vector3 LossyScale
         {
             get
@@ -165,7 +170,6 @@ namespace Fulcrum.Engine.Scene
         #region 行为方法
         public enum Space { Self, World }
 
-        /// <summary>按空间平移</summary>
         public void Translate(Vector3 delta, Space space = Space.Self)
         {
             if (space == Space.Self)
@@ -179,7 +183,6 @@ namespace Fulcrum.Engine.Scene
             }
         }
 
-        /// <summary>按欧拉角（度）旋转</summary>
         public void Rotate(Vector3 eulerDeltaDeg, Space space = Space.Self)
         {
             var dq = FromEulerDegrees(eulerDeltaDeg);
@@ -189,7 +192,6 @@ namespace Fulcrum.Engine.Scene
                 Rotation = NormalizeSafe(dq * Rotation);
         }
 
-        /// <summary>朝向目标（世界空间）</summary>
         public void LookAt(Vector3 target, Vector3 worldUp)
         {
             var pos = Position;
@@ -213,7 +215,6 @@ namespace Fulcrum.Engine.Scene
             Rotation = Quaternion.CreateFromRotationMatrix(rotM);
         }
 
-        /// <summary>设置本地 TRS 一次性操作</summary>
         public void SetLocalTRS(Vector3 pos, Quaternion rot, Vector3 scl)
         {
             _localPosition = pos;
@@ -225,7 +226,6 @@ namespace Fulcrum.Engine.Scene
         public (Vector3 pos, Quaternion rot, Vector3 scl) GetLocalTRS()
             => (_localPosition, _localRotation, _localScale);
 
-        /// <summary>重置为单位变换</summary>
         public void Reset()
         {
             _localPosition = Vector3.Zero;
@@ -234,23 +234,18 @@ namespace Fulcrum.Engine.Scene
             SetDirty();
         }
 
-        /// <summary>空间变换：将“局部点”变换到“世界点”</summary>
         public Vector3 TransformPoint(Vector3 localPoint)
             => Vector3.Transform(localPoint, LocalToWorldMatrix);
 
-        /// <summary>空间变换：将“世界点”变换到“局部点”</summary>
         public Vector3 InverseTransformPoint(Vector3 worldPoint)
             => Vector3.Transform(worldPoint, WorldToLocalMatrix);
 
-        /// <summary>空间变换：向量（不含平移）局部→世界</summary>
         public Vector3 TransformVector(Vector3 localVector)
             => Vector3.TransformNormal(localVector, LocalToWorldMatrix);
 
-        /// <summary>空间变换：向量（不含平移）世界→局部</summary>
         public Vector3 InverseTransformVector(Vector3 worldVector)
             => Vector3.TransformNormal(worldVector, WorldToLocalMatrix);
 
-        /// <summary>设置父节点 </summary>
         public void SetParent(GameObject newParent, bool worldPositionStays = true)
         {
             if (Owner == null || newParent == null) return;
@@ -274,19 +269,39 @@ namespace Fulcrum.Engine.Scene
         }
         #endregion
 
-        #region 内部：矩阵重建与工具
+        #region 物理同步辅助
+        internal void BeginPhysicsUpdate()
+        {
+            _isUpdatingFromPhysics = true;
+        }
+
+        internal void EndPhysicsUpdate()
+        {
+            _isUpdatingFromPhysics = false;
+        }
+        #endregion
+
+        #region 矩阵重建与工具
         private void SetDirty()
         {
             _dirtyLocal = true;
             _dirtyWorld = true;
 
-            if (Owner == null) return;
-            foreach (var c in Owner.Children)
+            if (Owner != null)
             {
-                c.Transform._dirtyWorld = true;
-                c.Transform.PropagateDirtyWorld();
+                foreach (var c in Owner.Children)
+                {
+                    c.Transform._dirtyWorld = true;
+                    c.Transform.PropagateDirtyWorld();
+                }
+            }
+
+            if (_suppressChangedCounter == 0)
+            {
+                Changed?.Invoke(this);
             }
         }
+
 
         private void PropagateDirtyWorld()
         {

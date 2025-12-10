@@ -1,4 +1,4 @@
-﻿﻿// Copyright (C) 2025-2029 Convex89524
+﻿// Copyright (C) 2025-2029 Convex89524
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License
@@ -17,13 +17,15 @@ using System;
 using System.Numerics;
 using CMLS.CLogger;
 using Fulcrum.Common;
+using Fulcrum.Engine;
 using Fulcrum.Engine.App;
 using Fulcrum.Engine.GameObjectComponent;
 using Fulcrum.Engine.Render;
+using Fulcrum.Engine.Render.Input;
 using Fulcrum.Engine.Scene;
 using Fulcrum.Engine.Sound;
 
-namespace Fulcrum.Engine
+namespace fulcrum.mainlogic
 {
     public sealed class CoreMouseLookScript : ScriptBase
     {

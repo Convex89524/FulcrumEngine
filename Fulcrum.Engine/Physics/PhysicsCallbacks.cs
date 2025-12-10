@@ -19,6 +19,7 @@ using BepuPhysics.Collidables;
 using BepuPhysics.CollisionDetection;
 using BepuPhysics.Constraints;
 using BepuUtilities;
+using Fulcrum.Engine.GameObjectComponent.Phys;
 
 namespace Fulcrum.Engine.Physics
 {
@@ -86,9 +87,29 @@ namespace Fulcrum.Engine.Physics
             out PairMaterialProperties pairMaterial)
             where TManifold : unmanaged, IContactManifold<TManifold>
         {
-            pairMaterial.FrictionCoefficient      = DefaultFriction;
-            pairMaterial.MaximumRecoveryVelocity  = DefaultMaxRecoveryVelocity;
-            pairMaterial.SpringSettings           = DefaultSpringSettings;
+            float bouncinessA = 0f;
+            float bouncinessB = 0f;
+
+            if (pair.A.Mobility == CollidableMobility.Dynamic &&
+                RigidBodyComponent.TryGetByHandle(pair.A.BodyHandle, out var rbA))
+            {
+                bouncinessA = rbA.Bounciness;
+            }
+
+            if (pair.B.Mobility == CollidableMobility.Dynamic &&
+                RigidBodyComponent.TryGetByHandle(pair.B.BodyHandle, out var rbB))
+            {
+                bouncinessB = rbB.Bounciness;
+            }
+
+            float combinedBounciness = System.MathF.Max(bouncinessA, bouncinessB);
+
+            pairMaterial.FrictionCoefficient = DefaultFriction;
+
+            pairMaterial.MaximumRecoveryVelocity = DefaultMaxRecoveryVelocity * combinedBounciness;
+
+            pairMaterial.SpringSettings = DefaultSpringSettings;
+
             return true;
         }
     }
@@ -138,19 +159,16 @@ namespace Fulcrum.Engine.Physics
             var isDynamic = Vector.GreaterThan(localInertia.InverseMass, zero);
 
             Vector3Wide.ConditionalSelect(isDynamic, _gravityWide, default, out var gravityDt);
-
             velocity.Linear += gravityDt;
 
-            var linFactor = Vector<float>.One * (1f - LinearDamping);
-            var angFactor = Vector<float>.One * (1f - AngularDamping);
+            var linearDampPerStep  = Vector.Min(Vector<float>.One, dt * new Vector<float>(LinearDamping));
+            var angularDampPerStep = Vector.Min(Vector<float>.One, dt * new Vector<float>(AngularDamping));
 
-            velocity.Linear.X *= linFactor;
-            velocity.Linear.Y *= linFactor;
-            velocity.Linear.Z *= linFactor;
+            var linFactor = Vector<float>.One - linearDampPerStep;
+            var angFactor = Vector<float>.One - angularDampPerStep;
 
-            velocity.Angular.X *= angFactor;
-            velocity.Angular.Y *= angFactor;
-            velocity.Angular.Z *= angFactor;
+            Vector3Wide.Scale(velocity.Linear, linFactor, out velocity.Linear);
+            Vector3Wide.Scale(velocity.Angular, angFactor, out velocity.Angular);
         }
     }
 }

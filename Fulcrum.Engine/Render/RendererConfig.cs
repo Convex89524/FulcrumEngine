@@ -20,7 +20,7 @@ namespace Fulcrum.Engine.Render
     public class RendererConfig
     {
         public GraphicsBackend Backend { get; set; } = GraphicsBackend.Vulkan;
-        public string WindowTitle { get; set; } = "Veldrid Renderer";
+        public string WindowTitle { get; set; } = "Fulcrum Engine (by Convex89524)";
         public int WindowWidth { get; set; } = 800;
         public int WindowHeight { get; set; } = 600;
         public bool EnableValidation { get; set; } = true;

@@ -21,6 +21,7 @@ using BepuUtilities.Memory;
 using CMLS.CLogger;
 using Fulcrum.Common;
 using Fulcrum.Engine.App;
+using Fulcrum.Engine.GameObjectComponent.Phys;
 using Fulcrum.Engine.Render;
 using Fulcrum.Engine.Scene;
 using Fulcrum.Engine.Sound;
@@ -30,6 +31,8 @@ namespace Fulcrum.Engine
     public static class FulcrumEngine
     {
         private static readonly Clogger LOGGER = LogManager.GetLogger("FulcrumEngine");
+
+        public static Clogger GlobalLogger { get => LOGGER; }
 
         #region Sub-Engine
 
@@ -52,10 +55,14 @@ namespace Fulcrum.Engine
         private static readonly List<ScriptBase> LoadedScripts = new();
 
         public static bool IsRun = false;
+        
         public static int ServerTick = 0;
+        public static int ServerPhysTick = 0;
 
-        private static int _tickRate = 20;
+        private static int _tickRate = 50;
+        private static int _phyTickRate = 200;
         private static double _targetFrameTimeMs => 1000.0 / _tickRate;
+        private static double _phyTargetFrameTimeMs => 1000.0 / _phyTickRate;
 
         public static event Action<double> OnLogicTick;
         public static event Action OnEngineShutdown;
@@ -171,6 +178,7 @@ namespace Fulcrum.Engine
         }
 
         private static Thread MainTickThread;
+        private static Thread PhysTickThread;
 
         public static void RunMainTick()
         {
@@ -206,7 +214,40 @@ namespace Fulcrum.Engine
                 }
 
             });
+            
+            var physDtWatch = new Stopwatch();
+            physDtWatch.Start();
+            
+            RigidBodyComponent.SyncAllToPhysics();
+            
+            PhysTickThread = new Thread(() =>
+            {
+                double targetFrameTime;
+
+                Stopwatch stopwatch = new Stopwatch();
+
+                while (IsRun)
+                {
+                    stopwatch.Restart();
+
+                    double deltaTime = physDtWatch.Elapsed.TotalSeconds;
+                    physDtWatch.Restart();
+
+                    PhysTick(deltaTime);
+
+                    EngineEvents.RaiseLogicTick(deltaTime);
+
+                    targetFrameTime = _phyTargetFrameTimeMs;
+
+                    double elapsed = stopwatch.Elapsed.TotalMilliseconds;
+                    int sleepTime = (int)(targetFrameTime - elapsed);
+                    if (sleepTime > 0)
+                        Thread.Sleep(sleepTime);
+                }
+            });
+            
             MainTickThread.Start();
+            PhysTickThread.Start();
 
             RenderApp.Renderer.OnUpdate += (renderer) =>
             {
@@ -326,16 +367,10 @@ namespace Fulcrum.Engine
 
         private static void Tick(double deltaTime)
         {
-            if (ServerTick >= 20)
+            if (ServerTick >= 50)
                 ServerTick = 0;
             else
                 ServerTick++;
-
-            Task.Run(() =>
-            {
-                if (PhysicsWorld.Initialized)
-                    PhysicsWorld.StepFixed(deltaTime);
-            });
 
             foreach (var script in LoadedScripts)
             {
@@ -348,6 +383,19 @@ namespace Fulcrum.Engine
                     LOGGER.Warn($"Script {script.ScriptId} OnUpdate failed: {e.Message}");
                 }
             }
+        }
+        
+        private static void PhysTick(double deltaTime)
+        {
+            if (ServerPhysTick >= 200)
+                ServerPhysTick = 0;
+            else
+                ServerPhysTick++;
+            
+            RigidBodyComponent.SyncAllFromPhysics();
+                
+            if (PhysicsWorld.Initialized)
+                PhysicsWorld.StepFixed(deltaTime);
         }
 
         public static void RenderFrame(RendererBase renderer)

@@ -55,6 +55,7 @@ public static class EngineDebugGUI
             ImGui.Separator();
             ImGui.Text($"IsRun: {FulcrumEngine.IsRun}");
             ImGui.Text($"ServerTick: {FulcrumEngine.ServerTick}");
+            ImGui.Text($"ServerPhysTick: {FulcrumEngine.ServerPhysTick}");
 
             var startup = FulcrumEngine.StartupOptions;
             ImGui.Spacing();

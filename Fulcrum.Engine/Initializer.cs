@@ -108,7 +108,7 @@ namespace Fulcrum.Engine
             // Renderer 配置总线
             var rendererBus = ConfigManager.GetOrCreateBus("renderer");
 
-            var r_WindowTitle        = rendererBus.Register("WindowTitle",        "Fulcrum");
+            var r_WindowTitle        = rendererBus.Register("WindowTitle",        "Fulcrum (by:Convex89524)");
             var r_WindowWidth        = rendererBus.Register("WindowWidth",        768);
             var r_WindowHeight       = rendererBus.Register("WindowHeight",       768);
 
@@ -121,7 +121,7 @@ namespace Fulcrum.Engine
             var r_ClearColorB        = rendererBus.Register("ClearColorB",        RgbaFloat.CornflowerBlue.B);
             var r_ClearColorA        = rendererBus.Register("ClearColorA",        RgbaFloat.CornflowerBlue.A);
 
-            var r_TargetFps          = rendererBus.Register("TargetFps",          240);
+            var r_TargetFps          = rendererBus.Register("TargetFps",          340);
             var r_StartMouseLocked   = rendererBus.Register("StartMouseLocked",   true);
             var r_MouseSensitivity   = rendererBus.Register("MouseSensitivity",   0.0012f);
             var r_BaseMoveSpeed      = rendererBus.Register("BaseMoveSpeed",      6.0f);

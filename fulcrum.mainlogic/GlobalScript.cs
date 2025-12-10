@@ -18,6 +18,7 @@ using Fulcrum.Common;
 using Fulcrum.Engine;
 using Fulcrum.Engine.App;
 using Fulcrum.Engine.GameObjectComponent;
+using Fulcrum.Engine.GameObjectComponent.Phys;
 using Fulcrum.Engine.PrefabGameObject;
 using Fulcrum.Engine.Render;
 using Fulcrum.Engine.Scene;
@@ -76,49 +77,24 @@ public class GlobalScript : ScriptBase
         
         moMusicCop.CreateRuntimeSource();
         moMusicCop.RuntimeSource?.Play();
-
-
-        // 球
-        var sphere = new Sphere("Sphere1", radius: 0.5f);
-        scene.AddRoot(sphere);
-
-        // 圆柱
+        
+        // --- 圆柱 ---
         var cyl = new Cylinder("Cylinder1", radius: 0.5f, height: 2.0f);
         scene.AddRoot(cyl);
+        
+        cyl.Transform.Position = new Vector3(-1, 5.0f, 0);
+        cyl.Transform.Rotation = new Quaternion(0.3826834f, 0.1f, 0f, 0.9238795f);
+        cyl.IsKinematic = false;
+        cyl.GetComponent<RigidBodyComponent>().Bounciness = 0.8f;
 
-        // 三角柱
-        var tri = new TriangularPrism("TriPrism1", width: 1.0f, height: 1.5f, depth: 1.0f);
-        scene.AddRoot(tri);
-
-        // 楔体
-        var wedge = new Wedge("Wedge1", new Vector3(1, 1, 2));
-        scene.AddRoot(wedge);
-
-        // 按 X 轴排成一排（只是几何体）
-        var primitives = new GameObject[]
-        {
-            sphere,
-            cyl,
-            tri,
-            wedge
-        };
-
-        float startX = -3.0f;   // 起点 X
-        float spacing = 2.0f;   // 间距
-        float y = 0.0f;         // 统一放在地平面
-        float z = 0.0f;         // 一条直线
-
-        for (int i = 0; i < primitives.Length; i++)
-        {
-            var go = primitives[i];
-            if (go == null) continue;
-
-            go.Transform.Position = new Vector3(
-                startX + i * spacing,
-                y,
-                z
-            );
-        }
+        // --- 地面 ---
+        var ground = new Cube("Ground", new Vector3(100, 1, 100));
+        scene.AddRoot(ground);
+        
+        ground.Transform.Position = new Vector3(0, -2f, 0);
+        ground.Transform.Rotation = new Quaternion(0.1826834f, 0f, 0f, 0.9238795f);
+        ground.IsKinematic = true;
+        ground.GetComponent<RigidBodyComponent>().Bounciness = 0.8f;
     }
 
     public override void OnUpdate(int currentTick, AudioEngine audioEngine)

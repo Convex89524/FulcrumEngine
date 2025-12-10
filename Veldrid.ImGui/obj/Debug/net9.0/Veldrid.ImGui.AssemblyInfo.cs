@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyDescriptionAttribute(("ImGui integration for Veldrid. Provides a simple interface for rendering and inte" +
     "racting with ImGui.NET."))]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0fcc4cade9a6cc30b51e56b256ff91ee8068e80a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2221a01261d382217fada0e4642f784f5f2e3a25")]
 [assembly: System.Reflection.AssemblyProductAttribute("Veldrid.ImGui")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Veldrid.ImGui")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

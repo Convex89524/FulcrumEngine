@@ -16,6 +16,7 @@ using CMLS.CLogger;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Numerics;
+using Fulcrum.Engine.Render.Input;
 using Fulcrum.Engine.Render.Shaders;
 using ImGuiNET;
 using Veldrid;

@@ -1,4 +1,4 @@
-﻿﻿// Copyright (C) 2025-2029 Convex89524
+﻿// Copyright (C) 2025-2029 Convex89524
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ namespace fulcrum.mainlogic
 
         public float SpeedOfSound { get; set; } = 343f;
 
-        public float DopplerScale { get; set; } = 1.0f;
+        public float DopplerScale { get; set; } = 0.2f;
 
         public Vector3 DominantDirection { get; set; } = new Vector3(0, 0, -1);
 
