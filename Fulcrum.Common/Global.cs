@@ -22,6 +22,10 @@ namespace Fulcrum.Common
 		
 		public static string? GameFolderName { set; get; }
 		
+		public static string? SceneFilePath { set; get; }
+		
+		public static string? SceneFolderPath { set; get; }
+		
 		public static string? GameConfigPath { set; get; }
 	}
 }

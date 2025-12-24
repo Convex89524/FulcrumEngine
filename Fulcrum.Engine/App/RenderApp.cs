@@ -106,6 +106,8 @@ namespace Fulcrum.Engine.App
                 MoveSpeed   = AppOptions.BaseMoveSpeed
             };
             Renderer.Camera = cam;
+            
+            SceneCameraBinder.Initialize(Renderer);
 
             Renderer.SetFPS(AppOptions.TargetFps);
 

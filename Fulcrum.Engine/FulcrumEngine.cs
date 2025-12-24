@@ -21,6 +21,7 @@ using BepuUtilities.Memory;
 using CMLS.CLogger;
 using Fulcrum.Common;
 using Fulcrum.Engine.App;
+using Fulcrum.Engine.GameObjectComponent.Light;
 using Fulcrum.Engine.GameObjectComponent.Phys;
 using Fulcrum.Engine.Render;
 using Fulcrum.Engine.Scene;
@@ -63,10 +64,13 @@ namespace Fulcrum.Engine
         private static int _phyTickRate = 200;
         private static double _targetFrameTimeMs => 1000.0 / _tickRate;
         private static double _phyTargetFrameTimeMs => 1000.0 / _phyTickRate;
-
-        public static event Action<double> OnLogicTick;
-        public static event Action OnEngineShutdown;
-
+        
+        #region API
+        
+        public static EngineCoordinator Coordinator => _coordinator;
+        
+        #endregion
+        
         public static EngineStartupOptions StartupOptions { get; private set; } = new EngineStartupOptions();
 
         public static Func<(Simulation simulation, BufferPool bufferPool, IThreadDispatcher dispatcher)> PhysicsBootstrapper { get; set; }
@@ -182,8 +186,6 @@ namespace Fulcrum.Engine
 
         public static void RunMainTick()
         {
-            LOGGER.Info("Engine main tickLoop startup.");
-
             IsRun = true;
             var dtWatch = new Stopwatch();
             dtWatch.Start();
@@ -246,7 +248,10 @@ namespace Fulcrum.Engine
                 }
             });
             
+            LOGGER.Info("Engine main tickLoop startup.");
             MainTickThread.Start();
+            
+            LOGGER.Info("Engine PhysTickLoop startup.");
             PhysTickThread.Start();
 
             RenderApp.Renderer.OnUpdate += (renderer) =>
@@ -285,9 +290,9 @@ namespace Fulcrum.Engine
 
             try
             {
-                string fullPath = Path.GetFullPath(filePath);
-                Scene.SceneSerializer.SaveToFile(scene, fullPath);
-                LOGGER.Info($"Current Scene saved to: {fullPath}");
+                string fullPath = Path.Combine(Global.SceneFolderPath, filePath);
+                fullPath += ".fscn";
+                SceneSerializer.SaveToFile(scene, fullPath);
             }
             catch (Exception e)
             {
@@ -371,6 +376,8 @@ namespace Fulcrum.Engine
                 ServerTick = 0;
             else
                 ServerTick++;
+            
+            LightManager.UpdateLighting(RenderApp.Renderer);
 
             foreach (var script in LoadedScripts)
             {

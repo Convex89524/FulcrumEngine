@@ -53,8 +53,7 @@ namespace Fulcrum.Engine.Render.Modules
                 name: "BlackHole",
                 vertexLayout: VertexPositionTexture.Layout,
                 pipelineDescription: pipelineDesc);
-
-            // 着色器路径（相对 Global.GamePath）
+            
             _blackHole.SetShaderPaths(
                 "shaders/blackhole.vert",
                 "shaders/blackhole.frag");

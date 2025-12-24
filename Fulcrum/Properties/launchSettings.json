@@ -1,8 +1,8 @@
 {
   "profiles": {
-    "Fulcrum.Launcher​​": {
+    "Fulcrum": {
       "commandName": "Project",
-      "commandLineArgs": "-g \"fulcrum\"",
+      "commandLineArgs": "-g \"fulcrum\" -s \"fulcrum_scene.sce\"",
       "workingDirectory": "I:\\vsd\\Fulcrum\\Fulcrum\\bin\\Debug\\net9.0-windows"
     }
   }

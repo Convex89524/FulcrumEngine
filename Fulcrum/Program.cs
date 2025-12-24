@@ -35,11 +35,16 @@ namespace Fulcrum.Launcher
 				var parser = new CommandLineParser();
 				parser.AddOption("gamepath", "g", typeof(string), required: true)
 					  .AllowPositionalArguments(true);
+				
+				parser.AddOption("scenepath", "s", typeof(string), required: true)
+					.AllowPositionalArguments(true);
 
 				ParseResult result = parser.Parse(args);
 				
 				Global.GamePath = Path.GetFullPath(result.GetValue<string>("gamepath"));
 				Global.GameFolderName = Path.GetFileName(Global.GamePath);
+				Global.SceneFolderPath = Path.Combine(Global.GamePath, "scene");
+				Global.SceneFilePath = Path.Combine(Global.SceneFolderPath, result.GetValue<string>("scenepath"));
 				Global.ResourcesPath = Path.Combine(Global.GamePath, "resources");
 				Global.GameConfigPath = Path.Combine(Global.GamePath, "config");
 				LOGGER.Info("游戏路径: " + Global.GamePath);

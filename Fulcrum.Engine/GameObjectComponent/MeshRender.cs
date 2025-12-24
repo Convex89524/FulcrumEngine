@@ -1,8 +1,8 @@
-﻿// Copyright (C) 2025-2029 Convex89524
+﻿﻿// Copyright (C) 2025-2029 Convex89524
 // 
 // This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License
-// as published by the Free Software Foundation, version 3 (GPLv3 only).
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, version 3 (GPLv3 only).
 // 
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -12,278 +12,157 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+using System;
 using System.Numerics;
-using CMLS.CLogger;
+using Fulcrum.Common;
 using Fulcrum.Engine.Render;
+using Fulcrum.Engine.Render.Utils;
 using Fulcrum.Engine.Scene;
 using Veldrid;
+using TextureResource = Fulcrum.Engine.Render.TextureResource;
 
 namespace Fulcrum.Engine.GameObjectComponent
 {
     public class MeshRenderer : Component
     {
-        public string RenderableName
-        {
-            get => _renderableName ?? $"{Owner?.Name ?? "GameObject"}_Mesh";
-            set => _renderableName = value;
-        }
+        public static string DefaultVertexShaderPath { get; set; } =
+            "shaders/vulkanscene/mesh.vert";
+        public static string DefaultFragmentShaderPath { get; set; } =
+            "shaders/vulkanscene/mesh.frag";
 
-        private string _renderableName;
+        private VertexPositionNormalTexture[] _vertices;
+        private ushort[] _indices;
 
-        public VertexPositionNormalTexture[] Vertices { get; set; }
+        public MultiChannelTexturedRenderable3D Renderable { get; private set; }
 
-        public ushort[] Indices { get; set; }
+        private TextureView[] _textureChannels = new TextureView[4];
 
-        public string VertexShaderPath { get; set; } =
-            Path.Combine("shaders", "vulkanscene", "mesh.vert");
+        public float Roughness { get; set; } = 0.5f;
+        public float Metallic  { get; set; } = 0.0f;
+        public float Ao        { get; set; } = 1.0f;
 
-        public string FragmentShaderPath { get; set; } =
-            Path.Combine("shaders", "vulkanscene", "mesh.frag");
-        
-        public string? AlbedoTexturePath { get; set; }
-
-        public bool UseAlbedoTexture { get; set; } = true;
-        
-        public bool AutoModelFromTransform { get; set; } = true;
-
-        public Matrix4x4 ManualModelMatrix
-        {
-            get => _manualModelMatrix;
-            set
-            {
-                _manualModelMatrix = value;
-                if (_renderable != null)
-                    _renderable.ModelMatrix = value;
-            }
-        }
-
-        private Matrix4x4 _manualModelMatrix = Matrix4x4.Identity;
-
-        private GeometryRenderable3D _renderable;
-        private RendererBase _renderer;
-        private bool _registeredToRenderer;
+        public string RenderableName =>
+            $"{Owner?.Name ?? "GameObject"}_MeshRenderer";
 
         #region 生命周期
 
-        protected override void Awake()
-        {
-            base.Awake();
-        }
-
         protected override void OnEnable()
         {
-            base.OnEnable();
-            TryRegisterToRenderer();
+            // Simple render mode: no light system required.
         }
 
         protected override void OnDisable()
         {
-            base.OnDisable();
-            TryUnregisterFromRenderer();
+            // Simple render mode: no light system required.
         }
 
         protected override void OnDestroy()
         {
-            base.OnDestroy();
-            TryUnregisterFromRenderer();
+            Renderable?.Dispose();
+            Renderable = null;
         }
 
-        protected override void Update(double dt)
+        protected override void Update(double deltaTime)
         {
-            base.Update(dt);
-
-            if (_renderable == null || !_registeredToRenderer)
-                return;
-
-            if (Owner == null)
-                return;
-
-            if (AutoModelFromTransform)
+            if (Renderable != null && Owner != null && Owner.Transform != null)
             {
-                var model = Owner.Transform.LocalToWorldMatrix;
-                _renderable.ModelMatrix = model;
-                _manualModelMatrix = model;
-            }
-            else
-            {
-                _renderable.ModelMatrix = _manualModelMatrix;
+                Renderable.ModelMatrix = Owner.Transform.LocalToWorldMatrix;
+
+                var renderer = FulcrumEngine.RenderApp?.Renderer;
+                var gd = renderer?._graphicsDevice;
+                if (gd != null)
+                {
+                    var cam = renderer.Camera;
+                    var camPos = cam != null ? cam.Position : new Vector3(0, 0, 5);
+
+                    var lp = new GeometryRenderable3D.LightingParams
+                    {
+                        LightDir = Vector3.Normalize(new Vector3(-0.35f, -1.0f, -0.25f)),
+                        LightColor = new Vector3(1.0f, 1.0f, 1.0f),
+                        CameraPos = camPos,
+                        Roughness = Roughness,
+                        Metallic = Metallic,
+                        AO = Ao
+                    };
+
+                    Renderable.UpdateLighting(gd, lp);
+                }
             }
         }
 
         #endregion
 
-        #region 渲染器注册 / 注销
+        #region 网格 & 贴图 API
 
-        private void TryRegisterToRenderer()
+        public void SetMesh(
+            VertexPositionNormalTexture[] vertices,
+            ushort[] indices)
         {
-            if (_registeredToRenderer)
-                return;
+            _vertices = vertices ?? throw new ArgumentNullException(nameof(vertices));
+            _indices  = indices  ?? throw new ArgumentNullException(nameof(indices));
 
-            if (FulcrumEngine.RenderApp == null || FulcrumEngine.RenderApp.Renderer == null)
+            if (Renderable != null)
             {
-                return;
-            }
-
-            _renderer = FulcrumEngine.RenderApp.Renderer;
-
-            if (_renderable == null)
-            {
-                _renderable = CreateGeometryRenderable(_renderer);
-            }
-
-            try
-            {
-                _renderer.AddRenderable(_renderable);
-                _registeredToRenderer = true;
-
-                ApplyMeshToRenderable();
-
-                if (Owner != null && AutoModelFromTransform)
-                {
-                    var model = Owner.Transform.LocalToWorldMatrix;
-                    _manualModelMatrix = model;
-                    _renderable.ModelMatrix = model;
-                }
-                else
-                {
-                    _renderable.ModelMatrix = _manualModelMatrix;
-                }
-            }
-            catch (Exception e)
-            {
-                LOGGER.Warn($"MeshRenderer TryRegisterToRenderer failed: {e}");
+                Renderable.SetMeshData(_vertices, _indices);
             }
         }
-
-        private void TryUnregisterFromRenderer()
-        {
-            if (!_registeredToRenderer || _renderer == null || _renderable == null)
-                return;
-
-            try
-            {
-                _renderer.RemoveRenderable(_renderable.Name);
-                _registeredToRenderer = false;
-            }
-            catch (Exception e)
-            {
-                LOGGER.Warn($"MeshRenderer TryUnregisterFromRenderer failed: {e}");
-            }
-        }
-
+        
         #endregion
 
-        #region Mesh / Renderable 构建
+        #region Renderable 创建
 
-        public void SetMesh(VertexPositionNormalTexture[] vertices, ushort[] indices)
+        public MultiChannelTexturedRenderable3D CreateRenderable()
         {
-            Vertices = vertices;
-            Indices  = indices;
-            ApplyMeshToRenderable();
-        }
-
-        public void ApplyMeshToRenderable()
-        {
-            if (_renderable == null)
-                return;
-
-            if (Vertices != null && Vertices.Length > 0)
+            if (_vertices == null || _indices == null)
             {
-                try
-                {
-                    _renderable.SetVertexData(Vertices);
-                }
-                catch (Exception e)
-                {
-                    LOGGER.Warn($"MeshRenderer ApplyMeshToRenderable vertex failed: {e}");
-                }
+                throw new InvalidOperationException(
+                    "MeshRenderer.CreateRenderable: 请先调用 SetMesh() 设置顶点和索引。");
             }
 
-            if (Indices != null && Indices.Length > 0)
+            if (Renderable != null)
             {
-                try
-                {
-                    _renderable.SetIndexData(Indices);
-                }
-                catch (Exception e)
-                {
-                    LOGGER.Warn($"MeshRenderer ApplyMeshToRenderable index failed: {e}");
-                }
+                return Renderable;
             }
-        }
 
-        private GeometryRenderable3D CreateGeometryRenderable(RendererBase renderer)
-        {
-            var layout = VertexPositionNormalTexture.Layout;
+            var pipelineDesc = CreateDefaultPipelineDescription();
 
-            var pipelineDesc = CreateDefaultMeshPipelineDescription(renderer._config.DepthFormat);
-
-            var renderable = new MeshRenderable3D_internal(
+            var renderable = new MultiChannelTexturedRenderable3D(
                 RenderableName,
-                layout,
-                pipelineDesc)
-            {
-                VertexShaderPath   = VertexShaderPath,
-                FragmentShaderPath = FragmentShaderPath
-            };
+                4,
+                VertexPositionNormalTexture.Layout,
+                pipelineDesc);
 
-            return renderable;
+            renderable.VertexShaderPath   = DefaultVertexShaderPath;
+            renderable.FragmentShaderPath = DefaultFragmentShaderPath;
+
+            renderable.SetChannelViews(_textureChannels);
+
+            renderable.SetMeshData(_vertices, _indices);
+
+            Renderable = renderable;
+            return Renderable;
         }
 
-        private static GraphicsPipelineDescription CreateDefaultMeshPipelineDescription(PixelFormat? depthFormat)
+        private static GraphicsPipelineDescription CreateDefaultPipelineDescription()
         {
-            var blend = BlendStateDescription.SingleOverrideBlend;
-
-            var depth = new DepthStencilStateDescription(
-                depthTestEnabled: depthFormat.HasValue,
-                depthWriteEnabled: depthFormat.HasValue,
-                comparisonKind: ComparisonKind.LessEqual);
-
-            var rasterizer = new RasterizerStateDescription(
-                cullMode: FaceCullMode.Back,
-                fillMode: PolygonFillMode.Solid,
-                frontFace: FrontFace.Clockwise,
-                depthClipEnabled: true,
-                scissorTestEnabled: false);
-
-            return new GraphicsPipelineDescription(
-                blend,
-                depth,
-                rasterizer,
-                PrimitiveTopology.TriangleList,
-                new ShaderSetDescription(
-                    vertexLayouts: new[] { VertexPositionNormalTexture.Layout },
-                    shaders: Array.Empty<Shader>()
-                ),
-                Array.Empty<ResourceLayout>(),
-                new OutputDescription(
-                    depthFormat.HasValue
-                        ? new OutputAttachmentDescription(depthFormat.Value)
-                        : default,
-                    new OutputAttachmentDescription(PixelFormat.B8_G8_R8_A8_UNorm)
-                )
-            );
+            return new GraphicsPipelineDescription
+            {
+                BlendState = BlendStateDescription.SingleOverrideBlend,
+                DepthStencilState = new DepthStencilStateDescription(
+                    depthTestEnabled: true,
+                    depthWriteEnabled: true,
+                    comparisonKind: ComparisonKind.LessEqual),
+                RasterizerState = new RasterizerStateDescription(
+                    cullMode: FaceCullMode.Back,
+                    fillMode: PolygonFillMode.Solid,
+                    frontFace: FrontFace.Clockwise,
+                    depthClipEnabled: true,
+                    scissorTestEnabled: false),
+                PrimitiveTopology = PrimitiveTopology.TriangleList,
+                ResourceLayouts = Array.Empty<ResourceLayout>(),
+            };
         }
 
         #endregion
-
-        private static Matrix4x4? TryBuildModelFromTransform(GameObject go)
-        {
-            if (go == null || go.Transform == null)
-                return null;
-
-            return go.Transform.LocalToWorldMatrix;
-        }
-
-        private sealed class MeshRenderable3D_internal : GeometryRenderable3D
-        {
-            public MeshRenderable3D_internal(
-                string name,
-                VertexLayoutDescription vertexLayout,
-                GraphicsPipelineDescription pipelineDescription)
-                : base(name, vertexLayout, pipelineDescription)
-            {
-            }
-        }
     }
 }

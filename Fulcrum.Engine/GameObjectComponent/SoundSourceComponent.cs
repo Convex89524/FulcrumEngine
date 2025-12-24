@@ -122,7 +122,7 @@ namespace Fulcrum.Engine.GameObjectComponent
                 return;
             }
 
-            var coordinator = renderer.GetEngineCoordinator();
+            var coordinator = FulcrumEngine.Coordinator;
             if (coordinator == null)
             {
                 _logger.Warn("EngineCoordinator is null, SoundSourceComponent cannot create sound source.");

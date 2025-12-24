@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fulcrum.ComprehensiveParser")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2221a01261d382217fada0e4642f784f5f2e3a25")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b92fc68bf21006f60e72e4a76e618f7e64e96cf6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fulcrum.ComprehensiveParser")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fulcrum.ComprehensiveParser")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

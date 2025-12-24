@@ -18,9 +18,11 @@ using Fulcrum.Common;
 using Fulcrum.Engine;
 using Fulcrum.Engine.App;
 using Fulcrum.Engine.GameObjectComponent;
+using Fulcrum.Engine.GameObjectComponent.Light;
 using Fulcrum.Engine.GameObjectComponent.Phys;
 using Fulcrum.Engine.PrefabGameObject;
 using Fulcrum.Engine.Render;
+using Fulcrum.Engine.Render.Modules;
 using Fulcrum.Engine.Scene;
 using Fulcrum.Engine.Sound;
 
@@ -47,7 +49,7 @@ public class GlobalScript : ScriptBase
         };
         sfxBus.AddEffect(dopplerEffect);
         
-        // renderApp.AddModule(new BlackHoleModule());
+        renderApp.AddModule(new BlackHoleModule());
         
         var scene = Scene.CurrentScene;
         if (scene == null)
@@ -77,24 +79,6 @@ public class GlobalScript : ScriptBase
         
         moMusicCop.CreateRuntimeSource();
         moMusicCop.RuntimeSource?.Play();
-        
-        // --- 圆柱 ---
-        var cyl = new Cylinder("Cylinder1", radius: 0.5f, height: 2.0f);
-        scene.AddRoot(cyl);
-        
-        cyl.Transform.Position = new Vector3(-1, 5.0f, 0);
-        cyl.Transform.Rotation = new Quaternion(0.3826834f, 0.1f, 0f, 0.9238795f);
-        cyl.IsKinematic = false;
-        cyl.GetComponent<RigidBodyComponent>().Bounciness = 0.8f;
-
-        // --- 地面 ---
-        var ground = new Cube("Ground", new Vector3(100, 1, 100));
-        scene.AddRoot(ground);
-        
-        ground.Transform.Position = new Vector3(0, -2f, 0);
-        ground.Transform.Rotation = new Quaternion(0.1826834f, 0f, 0f, 0.9238795f);
-        ground.IsKinematic = true;
-        ground.GetComponent<RigidBodyComponent>().Bounciness = 0.8f;
     }
 
     public override void OnUpdate(int currentTick, AudioEngine audioEngine)
@@ -107,6 +91,8 @@ public class GlobalScript : ScriptBase
 
     public override void OnUninstall()
     {
+        FulcrumEngine.SaveCurrentScene("fulcrum_scene");
+        
         _engineCoordinator?.Dispose();
         _music?.Dispose();
     }

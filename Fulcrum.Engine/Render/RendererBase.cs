@@ -642,7 +642,7 @@ namespace Fulcrum.Engine.Render
 				}
 				else
 				{
-					const int MultiThreadThreshold = 32;
+					const int MultiThreadThreshold = 1;
 
 					if (snapshot.Length >= MultiThreadThreshold)
 					{
@@ -723,97 +723,74 @@ namespace Fulcrum.Engine.Render
 		
 		private void RenderFrameMultithreaded(IRenderable[] snapshot, Framebuffer fb)
 		{
-		    int logicalCores = Environment.ProcessorCount;
-		    int workerCount = Math.Min(logicalCores, snapshot.Length);
-		    if (workerCount <= 1)
-		    {
-		        RenderFrameSingleThread(snapshot, fb);
-		        return;
-		    }
+			if (_workerCount <= 1 || snapshot.Length == 0)
+			{
+				RenderFrameSingleThread(snapshot, fb);
+				return;
+			}
 
-		    int sliceSize = (snapshot.Length + workerCount - 1) / workerCount;
+			_commandList.Begin();
+			_commandList.SetFramebuffer(fb);
+			_commandList.ClearColorTarget(0, _config.ClearColor);
+			if (DepthEnabled)
+			{
+				_commandList.ClearDepthStencil(1f);
+			}
+			_commandList.End();
+			_graphicsDevice.SubmitCommands(_commandList);
 
-		    var tasks = new List<Task>(workerCount);
-		    var workerCmdLists = new List<CommandList>(workerCount);
-
-		    for (int workerIndex = 0; workerIndex < workerCount; workerIndex++)
-		    {
-		        int start = workerIndex * sliceSize;
-		        int end = Math.Min(snapshot.Length, start + sliceSize);
-
-		        if (start >= end)
-		        {
-		            break;
-		        }
-
-		        CommandList cmdList = _graphicsDevice.ResourceFactory.CreateCommandList();
-		        workerCmdLists.Add(cmdList);
-
-		        int taskStart = start;
-		        int taskEnd = end;
-
-		        tasks.Add(Task.Run(() =>
-		        {
-		            try
-		            {
-		                cmdList.Begin();
-		                cmdList.SetFramebuffer(fb);
-
-		                for (int i = taskStart; i < taskEnd; i++)
-		                {
-		                    snapshot[i]?.Draw(cmdList);
-		                }
-
-		                cmdList.End();
-		            }
-		            catch (Exception ex)
-		            {
-		                LOGGER.Error($"Worker {workerIndex} record failed: {ex.Message}\n{ex.StackTrace}");
-		                try { cmdList.Dispose(); } catch { /* ignore */ }
-		                throw;
-		            }
-		        }));
-		    }
-
-		    try
-		    {
-		        Task.WaitAll(tasks.ToArray());
-		    }
-		    catch (AggregateException ae)
-		    {
-		        LOGGER.Error("Multithreaded render record failed: " + ae.Flatten().Message);
-		        foreach (var cl in workerCmdLists)
-		        {
-		            try { cl.Dispose(); } catch { /* ignore */ }
-		        }
-		        return;
-		    }
-
-		    _commandList.Begin();
-		    _commandList.SetFramebuffer(fb);
-		    _commandList.ClearColorTarget(0, _config.ClearColor);
-		    if (DepthEnabled)
-		    {
-		        _commandList.ClearDepthStencil(1f);
-		    }
-		    _commandList.End();
-		    _graphicsDevice.SubmitCommands(_commandList);
-
-		    foreach (var cmdList in workerCmdLists)
-		    {
-		        _graphicsDevice.SubmitCommands(cmdList);
-		        cmdList.Dispose();
-		    }
-
-		    if (_imguiController != null)
-		    {
-		        _commandList.Begin();
-		        _commandList.SetFramebuffer(fb);
-		        _imguiController.Render(_graphicsDevice, _commandList);
-		        _commandList.End();
-		        _graphicsDevice.SubmitCommands(_commandList);
-		    }
-		    _graphicsDevice.SwapBuffers();
+			int workerCount = Math.Min(_workerCount, snapshot.Length);
+			int sliceSize = (snapshot.Length + workerCount - 1) / workerCount;
+    
+			for (int i = 0; i < workerCount; i++)
+			{
+				_workDone[i].Reset();
+			}
+    
+			for (int i = 0; i < workerCount; i++)
+			{
+				int start = i * sliceSize;
+				int end = Math.Min(snapshot.Length, start + sliceSize);
+				if (start >= end) continue;
+        
+				_workItems[i] = new WorkItem
+				{
+					Start = start,
+					End = end,
+					DoClear = false,
+					FB = fb,
+					Snapshot = snapshot
+				};
+			}
+    
+			for (int i = 0; i < workerCount; i++)
+			{
+				_workBegin[i].Set();
+			}
+    
+			for (int i = 0; i < workerCount; i++)
+			{
+				_workDone[i].Wait();
+			}
+    
+			for (int i = 0; i < workerCount; i++)
+			{
+				if (!_workerCmdLists[i].IsDisposed)
+				{
+					_graphicsDevice.SubmitCommands(_workerCmdLists[i]);
+				}
+			}
+    
+			if (_imguiController != null)
+			{
+				_commandList.Begin();
+				_commandList.SetFramebuffer(fb);
+				_imguiController.Render(_graphicsDevice, _commandList);
+				_commandList.End();
+				_graphicsDevice.SubmitCommands(_commandList);
+			}
+    
+			_graphicsDevice.SwapBuffers();
 		}
 
 		#endregion

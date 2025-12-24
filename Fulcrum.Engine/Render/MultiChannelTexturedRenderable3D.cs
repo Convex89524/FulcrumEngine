@@ -116,6 +116,12 @@ public class MultiChannelTexturedRenderable3D : GeometryRenderable3D
         else
             cl.Draw((uint)(_vertexBuffer.SizeInBytes / VertexLayout.Elements.Sum(e => e.Format.GetSizeInBytes())));
     }
+    
+    public void SetMeshData(VertexPositionNormalTexture[] vertices, ushort[] indices)
+    {
+        SetVertexData(vertices);
+        SetIndexData(indices);
+    }
 
     public override void Dispose()
     {

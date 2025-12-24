@@ -75,62 +75,62 @@ namespace Fulcrum.Engine.PrefabGameObject
 
             var v = new[]
             {
-                // 前面
-                V(-hx, -hy,  hz,  0, 0,  0, 0),
-                V( hx, -hy,  hz,  1, 0,  1, 0),
-                V( hx,  hy,  hz,  1, 1,  1, 1),
-                V(-hx,  hy,  hz,  0, 1,  0, 1),
+                // 前面 Z+
+                V(-hx, -hy,  hz,  0, 0,   0,  0,  1),
+                V( hx, -hy,  hz,  1, 0,   0,  0,  1),
+                V( hx,  hy,  hz,  1, 1,   0,  0,  1),
+                V(-hx,  hy,  hz,  0, 1,   0,  0,  1),
 
-                // 后面
-                V( hx, -hy, -hz,  0, 0,  0, 0),
-                V(-hx, -hy, -hz,  1, 0,  1, 0),
-                V(-hx,  hy, -hz,  1, 1,  1, 1),
-                V( hx,  hy, -hz,  0, 1,  0, 1),
+                // 后面 Z-
+                V( hx, -hy, -hz,  0, 0,   0,  0, -1),
+                V(-hx, -hy, -hz,  1, 0,   0,  0, -1),
+                V(-hx,  hy, -hz,  1, 1,   0,  0, -1),
+                V( hx,  hy, -hz,  0, 1,   0,  0, -1),
 
-                // 左
-                V(-hx, -hy, -hz,  0, 0,  0, 0),
-                V(-hx, -hy,  hz,  1, 0,  1, 0),
-                V(-hx,  hy,  hz,  1, 1,  1, 1),
-                V(-hx,  hy, -hz,  0, 1,  0, 1),
+                // 左面 X-
+                V(-hx, -hy, -hz,  0, 0,  -1,  0,  0),
+                V(-hx, -hy,  hz,  1, 0,  -1,  0,  0),
+                V(-hx,  hy,  hz,  1, 1,  -1,  0,  0),
+                V(-hx,  hy, -hz,  0, 1,  -1,  0,  0),
 
-                // 右
-                V( hx, -hy,  hz,  0, 0,  0, 0),
-                V( hx, -hy, -hz,  1, 0,  1, 0),
-                V( hx,  hy, -hz,  1, 1,  1, 1),
-                V( hx,  hy,  hz,  0, 1,  0, 1),
+                // 右面 X+
+                V( hx, -hy,  hz,  0, 0,   1,  0,  0),
+                V( hx, -hy, -hz,  1, 0,   1,  0,  0),
+                V( hx,  hy, -hz,  1, 1,   1,  0,  0),
+                V( hx,  hy,  hz,  0, 1,   1,  0,  0),
 
-                // 上
-                V(-hx,  hy,  hz,  0, 0,  0, 0),
-                V( hx,  hy,  hz,  1, 0,  1, 0),
-                V( hx,  hy, -hz,  1, 1,  1, 1),
-                V(-hx,  hy, -hz,  0, 1,  0, 1),
+                // 上面 Y+
+                V(-hx,  hy,  hz,  0, 0,   0,  1,  0),
+                V( hx,  hy,  hz,  1, 0,   0,  1,  0),
+                V( hx,  hy, -hz,  1, 1,   0,  1,  0),
+                V(-hx,  hy, -hz,  0, 1,   0,  1,  0),
 
-                // 下
-                V(-hx, -hy, -hz,  0, 0,  0, 0),
-                V( hx, -hy, -hz,  1, 0,  1, 0),
-                V( hx, -hy,  hz,  1, 1,  1, 1),
-                V(-hx, -hy,  hz,  0, 1,  0, 1),
+                // 下面 Y-
+                V(-hx, -hy, -hz,  0, 0,   0, -1,  0),
+                V( hx, -hy, -hz,  1, 0,   0, -1,  0),
+                V( hx, -hy,  hz,  1, 1,   0, -1,  0),
+                V(-hx, -hy,  hz,  0, 1,   0, -1,  0),
             };
 
             var idx = new ushort[]
             {
                 // 前
-                0,2,1,  0,3,2,
-    
+                0, 2, 1,  0, 3, 2,
+
                 // 后
-                4,6,5,  4,7,6,
+                4, 6, 5,  4, 7, 6,
 
                 // 左
-                8,10,9, 8,11,10,
+                8, 10, 9,  8, 11, 10,
 
                 // 右
-                12,14,13, 12,15,14,
+                12, 14, 13,  12, 15, 14,
 
                 // 上
-                16,18,17, 16,19,18,
+                16, 18, 17,  16, 19, 18,
 
                 // 下
-                20,22,21, 20,23,22
+                20, 22, 21,  20, 23, 22
             };
 
             _meshRenderer.SetMesh(v, idx);
@@ -144,12 +144,12 @@ namespace Fulcrum.Engine.PrefabGameObject
         private static VertexPositionNormalTexture V(
             float x, float y, float z,
             float u, float v,
-            float nx, float ny)
+            float nx, float ny, float nz)
         {
             return new VertexPositionNormalTexture
             {
                 Position = new Vector3(x, y, z),
-                Normal = new Vector3(nx, ny, 0),
+                Normal   = Vector3.Normalize(new Vector3(nx, ny, nz)),
                 TexCoord = new Vector2(u, v)
             };
         }
