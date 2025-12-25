@@ -10,7 +10,7 @@ FulcrumEngine provides a GameObject/Component framework, multi-threaded renderin
 - Vulkan rendering (Veldrid)  
 - Multi-threaded rendering/update  
 - ImGui debug UI  
-- OpenAL-based 3D audio  
+- NAudio-based 3D audio  
 - BEPU v2 physics integration  
 - Modular, replaceable, extensible architecture  
 
