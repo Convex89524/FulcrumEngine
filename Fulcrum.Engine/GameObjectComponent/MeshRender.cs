@@ -14,12 +14,11 @@
 
 using System;
 using System.Numerics;
-using Fulcrum.Common;
+using Fulcrum.Engine.GameObjectComponent.Light;
 using Fulcrum.Engine.Render;
 using Fulcrum.Engine.Render.Utils;
 using Fulcrum.Engine.Scene;
 using Veldrid;
-using TextureResource = Fulcrum.Engine.Render.TextureResource;
 
 namespace Fulcrum.Engine.GameObjectComponent
 {
@@ -36,6 +35,8 @@ namespace Fulcrum.Engine.GameObjectComponent
         public MultiChannelTexturedRenderable3D Renderable { get; private set; }
 
         private TextureView[] _textureChannels = new TextureView[4];
+        private RendererBase _renderer;
+        private bool _registered;
 
         public float Roughness { get; set; } = 0.5f;
         public float Metallic  { get; set; } = 0.0f;
@@ -48,16 +49,19 @@ namespace Fulcrum.Engine.GameObjectComponent
 
         protected override void OnEnable()
         {
-            // Simple render mode: no light system required.
+            LightManager.RegisterMeshRenderer(this);
+            TryCreateAndRegisterRenderable();
         }
 
         protected override void OnDisable()
         {
-            // Simple render mode: no light system required.
+            LightManager.UnregisterMeshRenderer(this);
+            UnregisterRenderable();
         }
 
         protected override void OnDestroy()
         {
+            UnregisterRenderable();
             Renderable?.Dispose();
             Renderable = null;
         }
@@ -105,6 +109,11 @@ namespace Fulcrum.Engine.GameObjectComponent
             {
                 Renderable.SetMeshData(_vertices, _indices);
             }
+
+            if (Owner?.ActiveInHierarchy == true && Enabled)
+            {
+                TryCreateAndRegisterRenderable();
+            }
         }
         
         #endregion
@@ -135,12 +144,79 @@ namespace Fulcrum.Engine.GameObjectComponent
             renderable.VertexShaderPath   = DefaultVertexShaderPath;
             renderable.FragmentShaderPath = DefaultFragmentShaderPath;
 
+            EnsureTextureChannels();
             renderable.SetChannelViews(_textureChannels);
 
             renderable.SetMeshData(_vertices, _indices);
 
             Renderable = renderable;
             return Renderable;
+        }
+
+        private void TryCreateAndRegisterRenderable()
+        {
+            if (_vertices == null || _indices == null)
+            {
+                return;
+            }
+
+            if (FulcrumEngine.RenderApp == null)
+            {
+                LOGGER.Warn("MeshRenderer: FulcrumEngine.RenderApp 为空，无法创建渲染对象。");
+                return;
+            }
+
+            var renderer = FulcrumEngine.RenderApp.Renderer;
+            if (renderer == null)
+            {
+                LOGGER.Warn("MeshRenderer: RenderApp.Renderer 为空，无法创建渲染对象。");
+                return;
+            }
+
+            if (Renderable == null)
+            {
+                CreateRenderable();
+            }
+
+            if (_registered) return;
+
+            EnsureTextureChannels();
+            Renderable.SetChannelViews(_textureChannels);
+
+            renderer.AddRenderable(Renderable);
+            _renderer = renderer;
+            _registered = true;
+        }
+
+        private void UnregisterRenderable()
+        {
+            if (!_registered) return;
+            if (_renderer != null && Renderable != null)
+            {
+                _renderer.RemoveRenderable(Renderable.Name);
+            }
+
+            _registered = false;
+            _renderer = null;
+        }
+
+        private void EnsureTextureChannels()
+        {
+            if (FulcrumEngine.TextureManager == null)
+            {
+                return;
+            }
+
+            TextureView fallback = null;
+            for (int i = 0; i < _textureChannels.Length; i++)
+            {
+                if (_textureChannels[i] != null) continue;
+
+                fallback ??= FulcrumEngine.TextureManager.LoadTexture2D(
+                    "mesh_default_null",
+                    "null.png");
+                _textureChannels[i] = fallback;
+            }
         }
 
         private static GraphicsPipelineDescription CreateDefaultPipelineDescription()
